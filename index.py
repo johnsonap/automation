@@ -1,4 +1,5 @@
 import os, urllib2, datetime, urlparse, re
+from bs4 import BeautifulSoup as Soup
 import simplejson as json
 from pymongo import Connection
 from flask import Flask
@@ -17,11 +18,30 @@ else:
 
 app = Flask(__name__)
 
+
+@app.route('/flag')
+def flag():
+    
+    flag_page = Soup(urllib2.urlopen('http://www.visitpanamacitybeach.com/controller.cfm?plugin=beachFlags&object=currentFlagApi&action=getAjax&startrow=1&rows=1&paginate=true&orderby=updated+desc').read())
+    flag_page = str(flag_page)
+    flag_page = flag_page[:flag_page.index('meta')-2]+'}}}'
+    flag_data = json.loads(flag_page)
+    flag_color = flag_data['data']['data']['result'][0]['code']
+    data = db.flag.find_one({'data':'flag'})
+    if not data:
+        data = {'data':'flag', 'status':flag_color}
+    else:
+        data['status'] = flag_color
+    db.flag.save(data)
+    
+    return flag_page, 200, {'Content-Type': 'text/plain'}
+
 @app.route('/')
 def index():
     now_time = datetime.datetime.now()
     weather_data = db.weather.find_one({'data':'weather'})['json']
 
+    flag = db.flag.find_one({'data':'flag'})['status']
     sunset = weather_data['sun_phase']['sunset']
     sunrise = weather_data['sun_phase']['sunrise']
     night = False
@@ -39,7 +59,7 @@ def index():
             night = True
             
             
-    return render_template('index.html',weather=weather_data, night=night)
+    return render_template('index.html',weather=weather_data, night=night, flag=flag)
 
 
 @app.route('/weather')

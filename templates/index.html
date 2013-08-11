@@ -41,10 +41,10 @@
         <div class="pane" id="weather-forecast">
             <div id="outsideTemp" class="{% if night %}night {% endif %}{{ weather.current_observation.icon|lower }}">{{ weather.current_observation.temp_f|round|int }}</div>
 								<div id="currentConditions">
-								    <h3>{{ weather.location.city }}</h3>
+								    <h3><i class="icon-flag {{ flag }}"></i> {{ weather.location.city }}</h3>
 								    High: {{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}&deg;
 								    <br/>Low: {{ weather.forecast.simpleforecast.forecastday[0].low.fahrenheit }}&deg;
-								    <br/>Wind: {% if weather.current_observation.wind_mph < 1 %} Calm {% else %}  {{ (weather.current_observation.wind_mph*0.868976242)|round(1) }} knots  from the {{ weather.current_observation.wind_dir }}{% endif%}
+								    <br/>Wind: {% if weather.current_observation.wind_mph < 1 %} Calm {% else %}  {{ (weather.current_observation.wind_mph*0.868976242)|round(1) }} knots, {{ weather.current_observation.wind_dir }}{% endif%}
 								    <br/>Chance of Rain: 30%</div>
 								<div id="forecast">
 									
