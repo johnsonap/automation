@@ -5,4 +5,6 @@ Werkzeug==0.9.3
 distribute==0.6.34
 gunicorn==17.5
 itsdangerous==0.23
+pymongo==2.5.2
+simplejson==3.3.0
 wsgiref==0.1.2

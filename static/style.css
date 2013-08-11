@@ -1,0 +1,275 @@
+
+#main{
+    width:480px;
+    height:300px;
+    box-sizing: border-box;
+    padding-left: 60px;
+}
+
+#sidebar{
+    height:300px;
+    width:50px;
+    background: #fefefe;
+    border-right: 1px solid #ddd;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    top:0;
+    left:0;
+    cursor: pointer;
+}
+
+
+#sidebar i{
+    pointer-events: none;
+}
+
+#sidebar li{
+    border-bottom: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    font-size: 1.4em;
+    padding-top: 13px;
+    text-indent: -2px;
+    height:50px;
+    width: 50px;
+    box-sizing: border-box;
+}
+#sidebar li:last-child{
+    border: none;
+}
+
+
+#thermostat{
+    width: 205px;
+    float: left;
+    text-align: center;
+    display: none;
+}
+#weather-forecast{
+    float: left;
+}
+
+#current-temp .button{
+    padding: 0 auto;
+}
+
+#current-temp .temp{
+    font-size: 7em;
+    line-height: 1.25em;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 5px;
+}
+
+#current-temp .temp::after{
+    content: '\00B0';
+}
+
+.inside {
+    width: 100%;
+    display: block;
+    padding: 6px 0px;
+    font-size: 95%;
+}
+
+#current-temp .change-temp{
+    margin-top: 31px;
+    float: right;
+}
+
+
+
+#thermostat .btn-group{
+    margin-bottom: 10px;
+}
+
+
+/* weather forecast */
+
+#forecast{
+    top:199px;
+    width: 420px;
+    height: 100px;
+    position: absolute;
+}
+
+
+
+#currentConditions{
+	float: right;
+	width: 184px;
+    height: auto;
+    margin-top: -5px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#outsideTemp{
+	background: url('img/Climacons_huge.png');
+
+	height: 185px;
+	font-size: 34px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
+	font-weight: bold;
+	width: 50%;
+	margin-top: 10px;
+}
+
+#outsideTemp:after{
+	content: "\00B0";
+}
+
+
+
+#outsideTemp.partlycloudy, #outsideTemp.mostlycloudy{
+padding-top: 110px;
+padding-left: 52px;
+background-position: -418px -46px;
+
+
+}
+
+#outsideTemp.night.partlycloudy, #outsideTemp.night.mostlycloudy{
+    padding-top: 62px;
+    padding-left: 40px;
+    background-position: -683px -67px;
+    background-size: 1835px;
+}
+
+
+
+#outsideTemp.clear{
+    padding-top: 72px;
+    padding-left: 76px;
+    background-position: -1971px -740px;
+    font-size: 24px;
+}
+
+#outsideTemp.night.clear{
+    padding-top: 100px;
+    padding-left: 111px;
+    background-position: -1272px -758px;
+    font-size: 42px;
+}
+
+#outsideTemp.overcast{
+
+}
+
+#outsideTemp.cloudy{
+    padding-top: 65px;
+    padding-left: 64px;
+    background-position: -29px -78px;
+    font-size: 31px;
+
+}
+
+
+#outsideTemp.tstorms{
+padding-top: 46px;
+padding-left: 45px;
+background-position: -1593px -1103px;
+
+
+}
+
+#outsideTemp.rain{
+	padding-top: 41px;
+	padding-left: 68px;
+	background-position: -969px -69px;
+	background-size: 1824px;
+}
+
+#weather-forecast{
+    height:300px;
+    width:420px;
+}
+
+#forecast li{
+	list-style: none;
+	display: block;
+	font-weight: bold;
+	float: left;
+	height: 100px;
+	width: 14.28%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border-right: 1px solid #ddd;
+
+
+}
+
+#forecast ul {
+    margin: 0;
+    margin-left: -10px;
+    width: 430px;
+    height: 100px;
+    padding: 0;
+    border-top:1px solid #ddd;
+}
+
+
+#forecast li:last-child{
+	border-right: none;
+
+
+}
+
+#forecast li span{
+	text-align: center;
+	display: block;
+	padding: 5px;
+	font-size: 1em;
+}
+
+
+#forecast li span.day{
+	background: url('img/Climacons_small.png');
+	text-transform: uppercase;
+	padding-bottom: 50px;
+
+}
+
+#forecast li span.temp{
+    margin-top: -4px;
+    margin-left: 3px;
+}
+
+#forecast li span.day.tstorms{
+background-position: -320px -520px;
+}
+
+#forecast li span.day.partlycloudy, #forecast li span.day.mostlycloudy{
+background-position: -72px -15px;
+}
+
+
+
+#forecast li span.day.chancerain{
+background-position: -321px -17px;
+}
+
+
+#forecast li span.day.cloudy{
+background-position: 2px -16px;
+}
+
+#forecast li span.day.clear{
+background-position: -409px -246px;
+}
+
+#forecast li span.day.chancetstorms{
+background-position: -416px -518px;
+}
+
+
+#forecast li span:last-child:after{
+	content: "\00B0";
+
+}
