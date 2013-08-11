@@ -1,0 +1,64 @@
+
+{% extends "_base.html" %} {% block content %}
+
+    <div id="main">
+        <ul id="sidebar">
+            <li data-pane="thermostat"><i class="icon-dashboard"></i></li>
+
+            <li data-pane="weather-forecast"><i class="icon-umbrella"></i></li>
+            
+            <li><i class="icon-lightbulb"></i></li>
+            
+            <li><i class="icon-cogs"></i></li>
+
+            <li></li>
+
+        </ul>
+
+        <div class="pane" id="thermostat">
+            
+            <div id="current-temp">
+                <div class="temp">76</div>
+                <div class="btn-group-vertical change-temp">
+                    <a type="button" class="btn btn-default"><i class="icon-minus"></i></a>
+                    <a type="button" class="btn btn-default"><i class="icon-plus"></i></a>
+                </div>
+            </div>
+            
+
+            <div class="btn-group btn-group-justified">
+                <a type="button" class="btn btn-primary">HEAT</a>
+                <a type="button" class="btn btn-default">AC</a>
+            </div>
+
+            <div class="btn-group btn-group-justified">
+                <a type="button" class="btn btn-primary">AUTO</a>
+                <a type="button" class="btn btn-default">ON</a>
+                <a type="button" class="btn btn-default">OFF</a>
+            </div>
+            <span class="inside label label-info">Current House Temp <span>79&deg;</span></span>
+        </div>
+        <div class="pane" id="weather-forecast">
+            <div id="outsideTemp" class="{% if night %}night {% endif %}{{ weather.current_observation.icon|lower }}">{{ weather.current_observation.temp_f|round|int }}</div>
+								<div id="currentConditions">
+								    <h3>{{ weather.location.city }}</h3>
+								    High: {{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}&deg;
+								    <br/>Low: {{ weather.forecast.simpleforecast.forecastday[0].low.fahrenheit }}&deg;
+								    <br/>Wind: {% if weather.current_observation.wind_mph < 1 %} Calm {% else %}  {{ (weather.current_observation.wind_mph*0.868976242)|round(1) }} knots  from the {{ weather.current_observation.wind_dir }}{% endif%}
+								    <br/>Chance of Rain: 30%</div>
+								<div id="forecast">
+									
+									<ul>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[1].icon }}">{{ weather.forecast.simpleforecast.forecastday[1].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[1].high.fahrenheit }}</span></li>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[2].icon }}">{{ weather.forecast.simpleforecast.forecastday[2].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[2].high.fahrenheit }}</span></li>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[3].icon }}">{{ weather.forecast.simpleforecast.forecastday[3].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[3].high.fahrenheit }}</span></li>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[4].icon }}">{{ weather.forecast.simpleforecast.forecastday[4].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[4].high.fahrenheit }}</span></li>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[5].icon }}">{{ weather.forecast.simpleforecast.forecastday[5].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[5].high.fahrenheit }}</span></li>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[6].icon }}">{{ weather.forecast.simpleforecast.forecastday[6].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[6].high.fahrenheit }}</span></li>
+									<li><span class="day {{ weather.forecast.simpleforecast.forecastday[7].icon }}">{{ weather.forecast.simpleforecast.forecastday[7].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[7].high.fahrenheit }}</span></li>
+									</ul>
+								</div>
+        </div>
+    </div>
+{% endblock %}
+
