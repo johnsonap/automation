@@ -107,6 +107,39 @@
 	-webkit-box-sizing: border-box;
 }
 
+.icon-flag.yellow{
+    color: #F7EF55;
+}
+.icon-flag.red{
+    color: #C02921;
+}
+
+.icon-flag.green{
+    color: #5DBB58;
+}
+
+.icon-flag.purple{
+    color: #A178BA;
+}
+
+.icon-flag.double-red{
+    color: #C02921;
+}
+
+.icon-flag.double-red::after{
+    content: "\f024";
+    display: block;
+}
+
+.icon-flag{
+    font-size: 53px;
+    float: right;
+}
+
+#currentConditions h3{
+    padding: 0px 15px 0 0;
+}
+
 #outsideTemp{
 	background: url('img/Climacons_huge.png');
 
