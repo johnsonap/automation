@@ -1,4 +1,4 @@
-import os, urllib2, datetime
+import os, urllib2, datetime, urlparse, re
 import simplejson as json
 from pymongo import Connection
 from flask import Flask
