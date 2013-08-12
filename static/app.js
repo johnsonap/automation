@@ -11,6 +11,7 @@ function sigFigs(n, sig) {
 
 
 
+/*
 $(window).on('scroll', function(e){
    scrollAmount = $(this).scrollTop();
    if(scrollAmount < 1){
@@ -20,6 +21,7 @@ $(window).on('scroll', function(e){
       $(this).scrollTop($(window).height());
    }
 });
+*/
 
 $('#sidebar').on('click', function(e){
     $('.pane').hide();
@@ -28,12 +30,15 @@ $('#sidebar').on('click', function(e){
 });
 
 $('.hvac').on('click','a', function(e){
-    console.log('sdfsd'); 
+
     window.e = e;
-    
+    setting = '';
+    on_off = '';
     if($(e.target).html() == 'OFF'){
         $('.hvac a').removeClass('btn-primary').addClass('btn-default');
         $(e.target).addClass('btn-primary')
+        setting = 'OFF'
+        on_off = 'OFF'
     }
     if($(e.target).html() == 'HEAT'){
         $('.hvac_setting a').removeClass('btn-primary').addClass('btn-default');
@@ -42,16 +47,28 @@ $('.hvac').on('click','a', function(e){
             $('.off').removeClass('btn-primary').addClass('btn-default')
             $('.auto').removeClass('btn-default').addClass('btn-primary')
         }
+        setting = 'HEAT'
+        on_off = $('.on_off .btn-primary').html();
     }
     
     if($(e.target).html() == "ON"){
         $('.on_off a').removeClass('btn-primary').addClass('btn-default');
+        if(!$('.hvac_setting a').hasClass('btn-primary')){
+            $('.heat').removeClass('btn-default').addClass('btn-primary');
+        }
         $(e.target).removeClass('btn-default').addClass('btn-primary');
+        setting =  $('.hvac_setting .btn-primary').html();;
+        on_off = 'ON';
     }
     
     if($(e.target).html() == "AUTO"){
         $('.on_off a').removeClass('btn-primary').addClass('btn-default');
+        if(!$('.hvac_setting a').hasClass('btn-primary')){
+            $('.heat').removeClass('btn-default').addClass('btn-primary');
+        }
         $(e.target).removeClass('btn-default').addClass('btn-primary');
+        setting =  $('.hvac_setting .btn-primary').html();;
+        on_off = 'AUTO';
     }
     
     if($(e.target).html() == 'AC'){
@@ -59,11 +76,13 @@ $('.hvac').on('click','a', function(e){
         $(e.target).removeClass('btn-default').addClass('btn-primary');
         if($('.off').hasClass('btn-primary')){
             $('.off').removeClass('btn-primary').addClass('btn-default')
-            $('.auto').removeClass('btn-default').addClass('btn-primary')
+            $('.auto').removeClass('btn-default').addClass('btn-primary')   
         }
+        setting = 'AC'
+        on_off = $('.on_off .btn-primary').html();
     }
     
-    $(e.target)
+    $.get('hvac/setting/'+setting+'/'+on_off);
     
 });
 
@@ -86,13 +105,46 @@ function addTemp(index){
     $('#current-temp .temp').html(temp)
 }
 
-var pusher = new Pusher('bbfd2fdfc81124a36b18');
-    var channel = pusher.subscribe('weather');
-    channel.bind('current_conditions', function(data) {
-        console.log(data);
+    var pusher = new Pusher('bbfd2fdfc81124a36b18');
+    
+    var weather_channel = pusher.subscribe('weather');
+    
+    var hvac_channel = pusher.subscribe('hvac');
+
+    var flag_channel = pusher.subscribe('flag');
+    
+    weather_channel.bind('current_conditions', function(data) {
         $('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
         wind = (sigFigs(data.current_conditions.wind_mph*.8,2));
         wind_str = wind+ ' knots, ' + data.current_conditions.wind_dir;
         if (wind < 1) wind_str = "Calm";
         $('#currentConditions p').html('High: ' + data.forecast[0].high.fahrenheit + '&deg;<br>Low: ' + data.forecast[0].low.fahrenheit +'&deg;<br>Wind: '+ wind_str +'<br>Relative Humidity: ' + data.current_conditions.relative_humidity)
+        $('.outside span').html(Math.round(data.current_conditions.temp_f));
     });
+    
+    hvac_channel.bind('update_temp', function(data) {
+        $('#current-temp .temp').html(data.temp);
+    });
+    
+    flag_channel.bind('update_flag', function(data) {
+        $('.icon-flag').attr('class', 'icon-flag ' + data.flag_color);
+    });
+    
+    hvac_channel.bind('update_settings', function(data) {
+        $('.hvac a').removeClass('btn-primary').addClass('btn-default');
+        $('.hvac .'+data.on_off.toLowerCase()).removeClass('btn-default').addClass('btn-primary');
+        $('.hvac .'+data.hvac_setting.toLowerCase()).removeClass('btn-default').addClass('btn-primary');
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

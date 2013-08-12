@@ -114,10 +114,10 @@ body{
 }
 
 .icon-flag.yellow{
-    color: #F7EF55;
+    color: #FCF2A2;
 }
-.icon-flag.red{
-    color: #C02921;
+.icon-flag.red, .icon-flag.doublered{
+    color: #AA0F03;
 }
 
 .icon-flag.green{
@@ -128,11 +128,7 @@ body{
     color: #A178BA;
 }
 
-.icon-flag.doublered{
-    color: #C02921;
-}
-
-.icon-flag.double-red::after{
+.icon-flag.doublered::after{
     content: "\f024";
     display: block;
 }

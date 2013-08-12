@@ -92,10 +92,10 @@ def hvac():
 
 @app.route('/hvac/temp/<temp>')
 def settemp(temp):
-    temp
     hvac_data = db.hvac.find_one({'data':'hvac'})
     hvac_data['json']['current_temp'] = temp
     db.hvac.save(hvac_data)
+    p['hvac'].trigger('update_temp', {'temp': temp})
     return temp, 200, {'Content-Type': 'text/plain'}
     
 @app.route('/hvac/setting/<setting_one>/<setting_two>')
@@ -103,6 +103,7 @@ def settings(setting_one, setting_two):
     hvac_data = db.hvac.find_one({'data':'hvac'})
     hvac_data['json']['hvac_setting'] = setting_one
     hvac_data['json']['on_off'] = setting_two
+    p['hvac'].trigger('update_settings', {'hvac_setting': setting_one, 'on_off': setting_two})
     db.hvac.save(hvac_data)
     return "ok", 200, {'Content-Type': 'text/plain'}
 
