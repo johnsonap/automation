@@ -3,6 +3,7 @@ document.ontouchstart = function(e){
 }
 
 function sigFigs(n, sig) {
+    if(n == 0){ return 0;}
     var mult = Math.pow(10,
         sig - Math.floor(Math.log(n) / Math.LN10) - 1);
     return Math.round(n * mult) / mult;
@@ -29,7 +30,7 @@ $('#sidebar').on('click', function(e){
 $('.hvac').on('click','a', function(e){
     console.log('sdfsd'); 
     window.e = e;
-
+    
     if($(e.target).html() == 'OFF'){
         $('.hvac a').removeClass('btn-primary').addClass('btn-default');
         $(e.target).addClass('btn-primary')
