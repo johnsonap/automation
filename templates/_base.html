@@ -6,11 +6,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <!--
-<link rel="apple-touch-icon" href="static/favicon.png"/>
-
-    <link rel="apple-touch-startup-image" href="favicon.png" />
--->
     <link rel="stylesheet" href="/static/bootstrap.min.css" type="text/css"/> 
     <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css?v=1.3" type="text/css" >
@@ -18,17 +13,12 @@
     <title>Home Automation</title>
 </head>
 <body>
-   
-    {% block content%}
-    
-    {% endblock %}
-    <script src="http://code.jquery.com/jquery.js"></script>
+    {% block content%}{% endblock %}
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="static/bootstrap.min.js"></script>
-
     <script src="static/underscore.min.js"></script>
     <script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="static/app.js"></script>
-    
     <script type="text/template" id="weather_template">
         <div class="pane" id="weather-forecast">
 
@@ -40,20 +30,17 @@
         	    <br/>Low: {{ weather.forecast.simpleforecast.forecastday[0].low.fahrenheit }}&deg;
         	    <br/>Wind: {% if weather.current_observation.wind_mph < 1 %} Calm {% else %}  {{ (weather.current_observation.wind_mph*0.868976242)|round(1) }} knots, {{ weather.current_observation.wind_dir }}{% endif%}
         	    <br/>Relative Humidity: {{ weather.current_observation.relative_humidity }}</p></div>
-        	<div id="forecast">
-        		
+        	<div id="forecast">	
         		<ul>
-        		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[1].icon }}">{{ weather.forecast.simpleforecast.forecastday[1].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[1].high.fahrenheit }}</span></li>
-        		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[2].icon }}">{{ weather.forecast.simpleforecast.forecastday[2].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[2].high.fahrenheit }}</span></li>
-        		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[3].icon }}">{{ weather.forecast.simpleforecast.forecastday[3].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[3].high.fahrenheit }}</span></li>
-        		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[4].icon }}">{{ weather.forecast.simpleforecast.forecastday[4].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[4].high.fahrenheit }}</span></li>
-        		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[5].icon }}">{{ weather.forecast.simpleforecast.forecastday[5].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[5].high.fahrenheit }}</span></li>
-        		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[6].icon }}">{{ weather.forecast.simpleforecast.forecastday[6].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[6].high.fahrenheit }}</span></li>
+            		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[1].icon }}">{{ weather.forecast.simpleforecast.forecastday[1].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[1].high.fahrenheit }}</span></li>
+            		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[2].icon }}">{{ weather.forecast.simpleforecast.forecastday[2].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[2].high.fahrenheit }}</span></li>
+            		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[3].icon }}">{{ weather.forecast.simpleforecast.forecastday[3].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[3].high.fahrenheit }}</span></li>
+            		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[4].icon }}">{{ weather.forecast.simpleforecast.forecastday[4].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[4].high.fahrenheit }}</span></li>
+            		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[5].icon }}">{{ weather.forecast.simpleforecast.forecastday[5].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[5].high.fahrenheit }}</span></li>
+            		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[6].icon }}">{{ weather.forecast.simpleforecast.forecastday[6].date.weekday_short|upper }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[6].high.fahrenheit }}</span></li>
         		</ul>
         	</div>
-        			
         </div>
-
     </script>
 </body>
 </html>

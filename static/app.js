@@ -1,17 +1,11 @@
+/*
 document.ontouchstart = function(e){ 
     e.preventDefault(); 
 }
 
-function sigFigs(n, sig) {
-    if(n == 0){ return 0;}
-    var mult = Math.pow(10,
-        sig - Math.floor(Math.log(n) / Math.LN10) - 1);
-    return Math.round(n * mult) / mult;
-}
 
 
 
-/*
 $(window).on('scroll', function(e){
    scrollAmount = $(this).scrollTop();
    if(scrollAmount < 1){
@@ -22,6 +16,14 @@ $(window).on('scroll', function(e){
    }
 });
 */
+
+function sigFigs(n, sig) {
+    if(n == 0){ return 0;}
+    var mult = Math.pow(10,
+        sig - Math.floor(Math.log(n) / Math.LN10) - 1);
+    return Math.round(n * mult) / mult;
+}
+
 
 $('#sidebar').on('click', function(e){
     $('.pane').hide();
