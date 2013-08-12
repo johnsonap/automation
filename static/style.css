@@ -101,7 +101,9 @@ body{
     position: fixed;
 }
 
-
+#current-temp{
+    height: 137px;
+}
 
 #currentConditions{
 	float: right;

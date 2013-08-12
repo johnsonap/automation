@@ -25,7 +25,7 @@
                 </div>
             </div>
             
-
+            <div class="thermostat-control">
             <div class="hvac hvac_setting btn-group btn-group-justified">
                 <a type="button" class="btn heat {% if hvac.hvac_setting == 'HEAT' %}btn-primary{% else %}btn-default{% endif%}">HEAT</a>
                 <a type="button" class="btn ac {% if hvac.hvac_setting == 'AC' %}btn-primary{% else %}btn-default{% endif%}">AC</a>
@@ -38,6 +38,7 @@
             </div>
             <span class="inside label label-info">Current House Temp <span>{{hvac.inside_temp}}&deg;</span></span>
             <span class="outside label label-success">Current Outside Temp <span>{{ weather.current_observation.temp_f|round|int }}&deg;</span></span>
+            </div>
         </div>
         {% include "weather.html" %} 
     </div>
