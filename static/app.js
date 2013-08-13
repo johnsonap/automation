@@ -21,9 +21,6 @@ window.flag_status = '';
 window.weather;
 window.hvac_settings;
 
-$(function() {
-    FastClick.attach(document.body);
-});
 
 function sigFigs(n, sig) {
     if(n == 0){ return 0;}
