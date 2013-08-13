@@ -17,6 +17,10 @@ $(window).on('scroll', function(e){
 });
 */
 
+$(function() {
+    FastClick.attach(document.body);
+});
+
 function sigFigs(n, sig) {
     if(n == 0){ return 0;}
     var mult = Math.pow(10,
@@ -125,7 +129,9 @@ function addTemp(index){
     });
     
     hvac_channel.bind('update_temp', function(data) {
-        $('#current-temp .temp').html(data.temp);
+        if(parseInt($('#current-temp .temp').html()) != parseInt(data.temp)){
+            $('#current-temp .temp').html(data.temp);
+        }
     });
     
     flag_channel.bind('update_flag', function(data) {
