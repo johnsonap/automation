@@ -40,7 +40,8 @@ body{
     display: block;
     text-align: center;
     font-size: 1.4em;
-    padding-top: 13px;
+    padding-top: 15px;
+    padding-left: 3px;
     text-indent: -2px;
     height:60px;
     width: 60px;
@@ -49,6 +50,7 @@ body{
 
 #sidebar li:last-child{
     border: none;
+    padding-top: 16px;
 }
 
 
