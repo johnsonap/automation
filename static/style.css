@@ -8,6 +8,12 @@ body{
     overflow: scroll; height: 100%; width: 100%;
 }
 
+/* bootstrap mobile button hack*/
+.mobileHoverFix:hover,
+.mobileHoverFix.hover{
+    background-position: 0 0px;
+}
+
 #main{
     width:480px;
     height:300px;
