@@ -1,15 +1,16 @@
 CACHE MANIFEST
-http://apjhome.herokuapp.com/static/bootstrap.min.css
-http://apjhome.herokuapp.com/static/bootstrap.min.js
-http://apjhome.herokuapp.com/static/underscore.min.js
-http://apjhome.herokuapp.com/static/font-awesome/css/font-awesome.css
-http://apjhome.herokuapp.com/static/font-awesome/font/fontawesome-webfont.svg#fontawesomeregular  
-http://apjhome.herokuapp.com/static/jquery.js
+bootstrap.min.css
+bootstrap.min.js
+underscore.min.js
+font-awesome/css/font-awesome.css
+font-awesome/font/fontawesome-webfont.svg#fontawesomeregular  
+jquery.js
 http://js.pusher.com/2.1/pusher.min.js
-http://apjhome.herokuapp.com/static/fastclick.js
-http://apjhome.herokuapp.com/static/img/Climacons_huge.png
-http://apjhome.herokuapp.com/static/img/Climacons_small.png 
+fastclick.js
+img/Climacons_huge.png
+img/Climacons_small.png 
 
 NETWORK:
-http://apjhome.herokuapp.com/static/style.css
-http://apjhome.herokuapp.com/static/app.js
+style.css
+app.js
+/
