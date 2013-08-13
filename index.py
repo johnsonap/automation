@@ -38,12 +38,13 @@ def hvac():
     db.hvac.save(data)
     return "ok", 200, {'Content-Type': 'text/plain'}
 
-@app.route('/hvac/temp/<temp>')
-def settemp(temp):
+@app.route('/hvac/temp/<temp>/<client_id>')
+def settemp(temp, client_id):
     hvac_data = db.hvac.find_one({'data':'hvac'})
     hvac_data['json']['current_temp'] = temp
     db.hvac.save(hvac_data)
-    p['hvac'].trigger('update_temp', {'temp': temp})
+
+    p['hvac'].trigger('update_temp', {'temp': temp, 'id':client_id})
     return temp, 200, {'Content-Type': 'text/plain'}
     
 @app.route('/hvac/setting/<setting_one>/<setting_two>')

@@ -111,17 +111,16 @@ function addTemp(index){
     if(temp < 65){
         temp = 90;
     }
-    $.ajaxSetup({
-        async: true
-    });
+    
     $('#current-temp .temp').html(temp)
-    $.get('hvac/temp/'+temp)
+    $.get('hvac/temp/'+temp + '/'+ window.id)
     
 }
 
 _.templateSettings = {
   interpolate : /\{\{(.+?)\}\}/g
 };
+window.id = Math.floor(new Date().getTime()*Math.random(1,10));
 
 var pusher = new Pusher('bbfd2fdfc81124a36b18');
 
@@ -152,7 +151,7 @@ $('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
 });
 
 hvac_channel.bind('update_temp', function(data) {
-    if(parseInt($('#current-temp .temp').html()) != parseInt(data.temp)){
+    if(data.id != window.id){
         $('#current-temp .temp').html(data.temp);
     }
 });

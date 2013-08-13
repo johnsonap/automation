@@ -2,27 +2,41 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+
 }
 
 body{
     overflow: scroll; height: 100%; width: 100%;
+    background: #efefef;
 }
 
-
+.hvac a.btn {
+    padding: 10px;
+}
+#hvac-stats {
+float: right;
+margin-right: 10px;
+width: 180px;
+}
 #current-temp{
-    height: 137px;
+    height: 142px;
     border: 1px solid #ccc;
     margin-bottom: 35px;
+    background: #fff;
 }
 .change-temp a:hover{
     text-decoration: none;
 }
+
+.change-temp a:first-child{
+    margin-left: 0px;
+}
 .change-temp a{
   display: inline-block;
-  padding: 6px 12px;
+  padding: 7px 25px;
   margin-bottom: 0;
-  margin-left: -1px;
-  font-size: 14px;
+  margin-left: 3px;
+  font-size: 20px;
   font-weight: bold;
   line-height: 1.428571429;
   text-align: center;
@@ -92,10 +106,15 @@ body{
 
 
 #thermostat{
-    width: 205px;
     float: left;
     text-align: center;
 
+}
+
+.thermostat{
+    width: 210px;
+    float: left;
+    margin-top:10px;
 }
 #weather-forecast{
     float: left;
