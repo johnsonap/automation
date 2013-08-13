@@ -1,8 +1,8 @@
-    <i class="icon-flag {{ weather.current_observation.flag_color }}"></i>  
+    
 	<div id="currentConditions">
     	<div id="outsideTemp" class="{{ weather.current_observation.night_string }} {{ weather.current_observation.icon }}">{{ weather.current_observation.temp_f_round }}</div>
 	    <div id="vitals">
-	       <h3>{{ weather.current_observation.display_location.city }}</h3><p>
+	       <h3><i class="icon-flag {{ weather.current_observation.flag_color }}"></i>  {{ weather.current_observation.display_location.city }}</h3><p>
 	       High: {{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}&deg;
 	       <br/>Low: {{ weather.forecast.simpleforecast.forecastday[0].low.fahrenheit }}&deg;
 	       <br/>Wind: {{weather.current_observation.wind_string }}
