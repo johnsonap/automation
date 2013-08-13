@@ -95,12 +95,21 @@ $('.hvac').on('click','a', function(e){
     $.get('hvac/setting/'+setting+'/'+on_off);
     
 });
-
-$('#temp-plus').on('click', function(){
-    addTemp(1)
+$(".btn").on("touchstart", function(){ 
+    $(this).removeClass("mobileHoverFix");
 });
-$('#temp-minus').on('click', function(){
-    addTemp(-1)
+$(".btn").on("touchend", function(){ 
+    $(this).addClass("mobileHoverFix");
+});
+
+$('#temp-plus').on('click', function(e){
+    addTemp(1);
+    $('#change-temp').blur();
+});
+$('#temp-minus').on('vclick', function(e){
+    addTemp(-1);
+    window.e = e;
+    
 });
 
 function addTemp(index){
