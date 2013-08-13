@@ -96,20 +96,20 @@ $('.hvac').on('click','a', function(e){
 $('#temp-plus').on('click', function(e){
     addTemp(1);
 });
-$('#temp-minus').on('click', function(e){
+$('#temp-minus').on('vclick', function(e){
     addTemp(-1);    
 });
 
 function addTemp(index){
-    temp = parseInt($('#current-temp .temp').html()) + index
+    $temp = $('#current-temp .temp');
+    temp = parseInt($temp.html()) + index
     if(temp > 90){
         temp = 65;
     }
     if(temp < 65){
         temp = 90;
     }
-    
-    $('#current-temp .temp').html(temp)
+    $temp.html(temp)
     $.get('hvac/temp/'+temp + '/'+ window.id)
     
 }
