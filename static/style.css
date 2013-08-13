@@ -1,16 +1,23 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
 body{
     overflow: scroll; height: 100%; width: 100%;
 }
+
 #main{
     width:480px;
     height:300px;
     box-sizing: border-box;
-    padding-left: 60px;
+    padding-left: 70px;
 }
 
 #sidebar{
     height:300px;
-    width:50px;
+    width:60px;
     background: #fefefe;
     border-right: 1px solid #ddd;
     margin: 0;
@@ -21,6 +28,8 @@ body{
     left:0;
     cursor: pointer;
 }
+
+
 
 #sidebar i{
     pointer-events: none;
@@ -33,14 +42,16 @@ body{
     font-size: 1.4em;
     padding-top: 13px;
     text-indent: -2px;
-    height:50px;
-    width: 50px;
+    height:60px;
+    width: 60px;
     box-sizing: border-box;
 }
 
 #sidebar li:last-child{
     border: none;
 }
+
+
 
 #thermostat{
     width: 205px;
@@ -91,12 +102,14 @@ body{
     margin-bottom: 10px;
 }
 
+.pane{
+    width: 410px;
+}
 
 /* weather forecast */
 
 #forecast{
     top:199px;
-    width: 420px;
     height: 100px;
     position: fixed;
 }
@@ -210,8 +223,8 @@ body{
 
 
 #outsideTemp.tstorms{
-padding-top: 46px;
-padding-left: 45px;
+padding-top: 34px;
+padding-left: 42px;
 background-position: -1593px -1103px;
 
 
@@ -226,7 +239,6 @@ background-position: -1593px -1103px;
 
 #weather-forecast{
     height:300px;
-    width:420px;
 }
 
 #forecast li{
@@ -246,7 +258,7 @@ background-position: -1593px -1103px;
 #forecast ul {
     margin: 0;
     margin-left: -10px;
-    width: 430px;
+    width: 420px;
     height: 101px;
     padding: 0;
     border-top:1px solid #ddd;
