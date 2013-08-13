@@ -98,11 +98,9 @@ $('.hvac').on('click','a', function(e){
 
 $('#temp-plus').on('click', function(e){
     addTemp(1);
-    e.preventDefault();
 });
 $('#temp-minus').on('click', function(e){
-    addTemp(-1);
-    e.preventDefault();    
+    addTemp(-1);    
 });
 
 function addTemp(index){
@@ -113,6 +111,9 @@ function addTemp(index){
     if(temp < 65){
         temp = 90;
     }
+    $.ajaxSetup({
+        async: true
+    });
     $.get('hvac/temp/'+temp)
     $('#current-temp .temp').html(temp)
 }
@@ -151,7 +152,7 @@ $('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
 
 hvac_channel.bind('update_temp', function(data) {
     if(parseInt($('#current-temp .temp').html()) != parseInt(data.temp)){
-        $('#current-temp .temp').html(data.temp);
+        //$('#current-temp .temp').html(data.temp);
     }
 });
 
