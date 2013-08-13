@@ -36,7 +36,7 @@ function sigFigs(n, sig) {
 $('#sidebar').on('click', function(e){
     $('.pane').hide();
     window.e = e;
-    $('#' + $(e.target).attr('data-pane')).show()
+    $('#' + $(e.target).attr('data-pane')).css('display','block');
 });
 
 $('.hvac').on('click','a', function(e){
