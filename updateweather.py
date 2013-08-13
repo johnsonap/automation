@@ -36,14 +36,14 @@ else:
 db.flag.save(data)
 datan['current_observation']['temp_f_round'] = int(round(datan['current_observation']['temp_f'],0))
 
-now_time = datetime.datetime.now()
+now_time = datetime.datetime.utcnow()
 night = False
 sunset = datan['sun_phase']['sunset']
 sunrise = datan['sun_phase']['sunrise']
 
-if int(sunset['hour']) < int(now_time.hour):
+if int(sunset['hour']) < int(now_time.hour-5):
     night = True
-if int(sunset['hour']) == int(now_time.hour):
+if int(sunset['hour']) == int(now_time.hour-5):
     if int(sunset['minute']) <= int(now_time.minute):
         night = True
 if int(sunrise['hour']) > int(now_time.hour):
