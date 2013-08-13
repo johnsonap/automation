@@ -30,13 +30,13 @@ function sigFigs(n, sig) {
 }
 
 
-$('#sidebar').on('click', function(e){
+$('#sidebar').fastClick(function(e){
     $('.pane').hide();
     window.e = e;
     $('#' + $(e.target).attr('data-pane')).css('display','block');
 });
 
-$('.hvac').on('click','a', function(e){
+$('.hvac a').fastClick(function(e){
 
     window.e = e;
     setting = '';
@@ -93,10 +93,10 @@ $('.hvac').on('click','a', function(e){
     
 });
 
-$('#temp-plus').fastClick( function(e){
+$('#temp-plus').fastClick(function(e){
     addTemp(1);
 });
-$('#temp-minus').fastClick( function(e){
+$('#temp-minus').fastClick(function(e){
     addTemp(-1);    
 });
 
