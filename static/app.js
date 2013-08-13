@@ -17,6 +17,10 @@ $(window).on('scroll', function(e){
 });
 */
 
+window.flag_status = '';
+window.weather;
+window.hvac_settings;
+
 $(function() {
     FastClick.attach(document.body);
 });
@@ -111,38 +115,42 @@ function addTemp(index){
     $('#current-temp .temp').html(temp)
 }
 
-    var pusher = new Pusher('bbfd2fdfc81124a36b18');
-    
-    var weather_channel = pusher.subscribe('weather');
-    
-    var hvac_channel = pusher.subscribe('hvac');
+var pusher = new Pusher('bbfd2fdfc81124a36b18');
 
-    var flag_channel = pusher.subscribe('flag');
-    
-    weather_channel.bind('current_conditions', function(data) {
-        $('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
-        wind = (sigFigs(data.current_conditions.wind_mph*.8,2));
-        wind_str = wind+ ' knots, ' + data.current_conditions.wind_dir;
-        if (wind < 1) wind_str = "Calm";
-        $('#currentConditions p').html('High: ' + data.forecast[0].high.fahrenheit + '&deg;<br>Low: ' + data.forecast[0].low.fahrenheit +'&deg;<br>Wind: '+ wind_str +'<br>Relative Humidity: ' + data.current_conditions.relative_humidity)
-        $('.outside span').html(Math.round(data.current_conditions.temp_f));
-    });
-    
-    hvac_channel.bind('update_temp', function(data) {
-        if(parseInt($('#current-temp .temp').html()) != parseInt(data.temp)){
-            $('#current-temp .temp').html(data.temp);
-        }
-    });
-    
-    flag_channel.bind('update_flag', function(data) {
-        $('.icon-flag').attr('class', 'icon-flag ' + data.flag_color);
-    });
-    
-    hvac_channel.bind('update_settings', function(data) {
-        $('.hvac a').removeClass('btn-primary').addClass('btn-default');
-        $('.hvac .'+data.on_off.toLowerCase()).removeClass('btn-default').addClass('btn-primary');
-        $('.hvac .'+data.hvac_setting.toLowerCase()).removeClass('btn-default').addClass('btn-primary');
-    });
+var weather_channel = pusher.subscribe('weather');
+
+var hvac_channel = pusher.subscribe('hvac');
+
+var flag_channel = pusher.subscribe('flag');
+
+weather_channel.bind('current_conditions', function(data) {
+    window.d = data;
+    $('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
+    var night = '';
+    $('#outsideTemp').attr('class', night + data.current_conditions.icon) 
+    wind = (sigFigs(data.current_conditions.wind_mph*.8,2));
+    wind_str = wind+ ' knots, ' + data.current_conditions.wind_dir;
+    if (wind < 1) wind_str = "Calm";
+    $('#currentConditions p').html('High: ' + data.forecast[0].high.fahrenheit + '&deg;<br>Low: ' + data.forecast[0].low.fahrenheit +'&deg;<br>Wind: '+ wind_str +'<br>Relative Humidity: ' + data.current_conditions.relative_humidity)
+    $('.outside span').html(Math.round(data.current_conditions.temp_f));
+});
+
+hvac_channel.bind('update_temp', function(data) {
+    if(parseInt($('#current-temp .temp').html()) != parseInt(data.temp)){
+        $('#current-temp .temp').html(data.temp);
+    }
+});
+
+flag_channel.bind('update_flag', function(data) {
+    window.flag_status = data.flag_color
+    $('.icon-flag').attr('class', 'icon-flag ' + data.flag_color);
+});
+
+hvac_channel.bind('update_settings', function(data) {
+    $('.hvac a').removeClass('btn-primary').addClass('btn-default');
+    $('.hvac .'+data.on_off.toLowerCase()).removeClass('btn-default').addClass('btn-primary');
+    $('.hvac .'+data.hvac_setting.toLowerCase()).removeClass('btn-default').addClass('btn-primary');
+});
     
     
     
