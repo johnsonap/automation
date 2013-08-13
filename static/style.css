@@ -8,6 +8,42 @@ body{
     overflow: scroll; height: 100%; width: 100%;
 }
 
+
+#current-temp{
+    height: 137px;
+    border: 1px solid #ccc;
+    margin-bottom: 35px;
+}
+.change-temp a:hover{
+    text-decoration: none;
+}
+.change-temp a{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  margin-left: -1px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 #main{
     width:480px;
     height:300px;
@@ -74,8 +110,8 @@ body{
     font-size: 7em;
     line-height: 1.25em;
     font-weight: bold;
-    float: left;
     margin-bottom: 5px;
+    margin: 0 auto;
 }
 
 #current-temp .temp::after{
@@ -94,8 +130,7 @@ body{
     margin-top: 15px;
 }
 #current-temp .change-temp{
-    margin-top: 31px;
-    float: right;
+    margin-top: -3px;
 }
 
 
@@ -116,9 +151,7 @@ body{
     position: fixed;
 }
 
-#current-temp{
-    height: 137px;
-}
+
 
 #currentConditions{
 	float: left;
