@@ -23,6 +23,17 @@ weather_data = usock.read()
 datan = json.loads(weather_data)
 usock.close()
 
+flag_page = Soup(urllib2.urlopen('http://www.visitpanamacitybeach.com/controller.cfm?plugin=beachFlags&object=currentFlagApi&action=getAjax&startrow=1&rows=1&paginate=true&orderby=updated+desc').read())
+flag_page = str(flag_page)
+flag_page = flag_page[:flag_page.index('meta')-2]+'}}}'
+flag_data = json.loads(flag_page)
+flag_color = flag_data['data']['data']['result'][0]['code']
+data = db.flag.find_one({'data':'flag'})
+if not data:
+    data = {'data':'flag', 'status':flag_color}
+else:
+    data['status'] = flag_color
+db.flag.save(data)
 datan['current_observation']['temp_f_round'] = int(round(datan['current_observation']['temp_f'],0))
 
 now_time = datetime.datetime.now()
@@ -40,8 +51,12 @@ if int(sunrise['hour']) > int(now_time.hour):
 if int(sunrise['hour']) == int(now_time.hour):
     if int(sunrise['minute']) >= int(now_time.minute):
         night = True
-
+night_string = ''
+if night:
+    night_string = 'night'
 datan['current_observation']['night'] = night
+datan['current_observation']['night_string'] = night_string
+datan['current_observation']['flag_color'] = flag_color
 wind_string = ''
 windspeed =  float(datan['current_observation']['wind_mph']) * 0.868976242
 if( windspeed <1):
@@ -59,4 +74,7 @@ else:
     data['json'] = datan
 db.weather.save(data)
 
-p['weather'].trigger('current_conditions', {'current_conditions': datan['current_observation'],'forecast': datan['forecast']['simpleforecast']['forecastday'][0:6]})
+p['weather'].trigger('current_conditions', {'current_observation': datan['current_observation'],'forecast':{'simpleforecast':{'forecastday': datan['forecast']['simpleforecast']['forecastday'][0:7]}}})
+
+
+

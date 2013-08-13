@@ -17,25 +17,8 @@ else:
 
 p = pusher.Pusher(app_id='51528', key='bbfd2fdfc81124a36b18', secret='c192b321e8df94b5b127')
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='static/templates')
 
-
-@app.route('/flag')
-def flag():
-    
-    flag_page = Soup(urllib2.urlopen('http://www.visitpanamacitybeach.com/controller.cfm?plugin=beachFlags&object=currentFlagApi&action=getAjax&startrow=1&rows=1&paginate=true&orderby=updated+desc').read())
-    flag_page = str(flag_page)
-    flag_page = flag_page[:flag_page.index('meta')-2]+'}}}'
-    flag_data = json.loads(flag_page)
-    flag_color = flag_data['data']['data']['result'][0]['code']
-    data = db.flag.find_one({'data':'flag'})
-    if not data:
-        data = {'data':'flag', 'status':flag_color}
-    else:
-        data['status'] = flag_color
-    db.flag.save(data)
-    
-    return flag_page, 200, {'Content-Type': 'text/plain'}
 
 @app.route('/')
 def index():
@@ -44,22 +27,6 @@ def index():
     flag = db.flag.find_one({'data':'flag'})['status']
     hvac_data = db.hvac.find_one({'data':'hvac'})['json']
     return render_template('index.html',weather=weather_data, flag=flag, hvac=hvac_data)
-
-
-@app.route('/weather')
-def weather():
-    url = "http://api.wunderground.com/api/3bb540c93093fad7/geolookup/conditions/forecast/astronomy/forecast10day/q/32408.json"
-    usock = urllib2.urlopen(url)
-    weather_data = usock.read()
-    datan = json.loads(weather_data)
-    usock.close()
-    data = db.weather.find_one({'data':'weather'})
-    if not data:
-        data = {'data':'weather', 'json':datan}
-    else:
-        data['json'] = datan
-    db.weather.save(data)
-    return weather_data, 200, {'Content-Type': 'text/plain'}
 
 @app.route('/hvac')
 def hvac():
