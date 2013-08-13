@@ -93,10 +93,10 @@ $('.hvac').on('click','a', function(e){
     
 });
 
-$('#temp-plus').on('click', function(e){
+$('#temp-plus').fastClick( function(e){
     addTemp(1);
 });
-$('#temp-minus').on('vclick', function(e){
+$('#temp-minus').fastClick( function(e){
     addTemp(-1);    
 });
 
