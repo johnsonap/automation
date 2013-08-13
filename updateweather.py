@@ -1,7 +1,6 @@
-import os, urllib2, urlparse, pusher
+import os, urllib2, urlparse, pusher, datetime
 from bs4 import BeautifulSoup as Soup
 import simplejson as json
-from time import sleep
 from pymongo import Connection
 
 MONGO_URL = os.environ.get('MONGOHQ_URL')
@@ -23,6 +22,36 @@ usock = urllib2.urlopen(url)
 weather_data = usock.read()
 datan = json.loads(weather_data)
 usock.close()
+
+datan['current_observation']['temp_f_round'] = int(round(datan['current_observation']['temp_f'],0))
+
+now_time = datetime.datetime.now()
+night = False
+sunset = datan['sun_phase']['sunset']
+sunrise = datan['sun_phase']['sunrise']
+
+if int(sunset['hour']) < int(now_time.hour):
+    night = True
+if int(sunset['hour']) == int(now_time.hour):
+    if int(sunset['minute']) <= int(now_time.minute):
+        night = True
+if int(sunrise['hour']) > int(now_time.hour):
+    night = True
+if int(sunrise['hour']) == int(now_time.hour):
+    if int(sunrise['minute']) >= int(now_time.minute):
+        night = True
+
+datan['current_observation']['night'] = night
+wind_string = ''
+windspeed =  float(datan['current_observation']['wind_mph']) * 0.868976242
+if( windspeed <1):
+    wind_string = 'Calm'
+else:
+    wind_string = round(windspeed,2) + ' knots, ' + datan['current_observation']['wind_dir']
+
+
+datan['current_observation']['wind_string'] = wind_string
+
 data = db.weather.find_one({'data':'weather'})
 if not data:
     data = {'data':'weather', 'json':datan}

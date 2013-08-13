@@ -39,30 +39,11 @@ def flag():
 
 @app.route('/')
 def index():
-    now_time = datetime.datetime.now()
-    weather_data = db.weather.find_one({'data':'weather'})['json']
 
+    weather_data = db.weather.find_one({'data':'weather'})['json']
     flag = db.flag.find_one({'data':'flag'})['status']
-    sunset = weather_data['sun_phase']['sunset']
-    sunrise = weather_data['sun_phase']['sunrise']
-    night = False
     hvac_data = db.hvac.find_one({'data':'hvac'})['json']
-    
-    print sunset['hour']
-    print now_time.hour
-    if int(sunset['hour']) < int(now_time.hour):
-        night = True
-    if int(sunset['hour']) == int(now_time.hour):
-        if int(sunset['minute']) <= int(now_time.minute):
-            night = True
-    if int(sunrise['hour']) > int(now_time.hour):
-        night = True
-    if int(sunrise['hour']) == int(now_time.hour):
-        if int(sunrise['minute']) >= int(now_time.minute):
-            night = True
-            
-            
-    return render_template('index.html',weather=weather_data, night=night, flag=flag, hvac=hvac_data)
+    return render_template('index.html',weather=weather_data, flag=flag, hvac=hvac_data)
 
 
 @app.route('/weather')

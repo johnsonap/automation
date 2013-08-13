@@ -119,10 +119,9 @@ body{
 }
 
 #currentConditions{
-	float: right;
-	width: 184px;
-    height: auto;
-    margin-top: -5px;
+	float: left;
+	width: 410px;
+	height: auto;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -149,6 +148,7 @@ body{
 }
 
 .icon-flag{
+    position: absolute;
     font-size: 53px;
     margin-top: -5px;
     float: right;
@@ -181,15 +181,16 @@ body{
 
 #outsideTemp.partlycloudy, #outsideTemp.mostlycloudy{
     padding-top: 94px;
-    padding-left: 49px;
-    background-position: -420px -46px;
+    padding-left: 36px;
+    background-position: 132% 4%;
+    margin-left: 5px;
 }
 
 #outsideTemp.night.partlycloudy, #outsideTemp.night.mostlycloudy{
-    padding-top: 74px;
-    padding-left: 64px;
-    background-position: -661px -39px;
-    background-size: 1835px;
+    padding-top: 94px;
+    padding-left: 36px;
+    background-position: 152% 4%;
+    margin-left: 5px;
 }
 
 
@@ -223,9 +224,9 @@ body{
 
 
 #outsideTemp.tstorms{
-padding-top: 34px;
-padding-left: 42px;
-background-position: -1593px -1103px;
+    padding-top: 34px;
+    padding-left: 56px;
+    background-position: 79% 94%;
 
 
 }
