@@ -114,8 +114,9 @@ function addTemp(index){
     $.ajaxSetup({
         async: true
     });
-    $.get('hvac/temp/'+temp)
     $('#current-temp .temp').html(temp)
+    $.get('hvac/temp/'+temp)
+    
 }
 
 _.templateSettings = {
@@ -152,7 +153,7 @@ $('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
 
 hvac_channel.bind('update_temp', function(data) {
     if(parseInt($('#current-temp .temp').html()) != parseInt(data.temp)){
-        //$('#current-temp .temp').html(data.temp);
+        $('#current-temp .temp').html(data.temp);
     }
 });
 
