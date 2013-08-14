@@ -11,7 +11,7 @@ body{
 }
 
 .hvac a.btn {
-    padding: 10px;
+    padding: 13px;
 }
 #hvac-stats {
 float: right;
@@ -21,7 +21,7 @@ width: 180px;
 #current-temp{
     height: 142px;
     border: 1px solid #ccc;
-    margin-bottom: 35px;
+    margin-bottom: 32px;
     background: #fff;
 }
 .change-temp a:hover{
@@ -263,18 +263,12 @@ width: 180px;
     font-size: 42px;
 }
 
-#outsideTemp.overcast{
-
-}
 
 #outsideTemp.cloudy{
-    padding-top: 65px;
-    padding-left: 64px;
-    background-position: -29px -78px;
-    font-size: 31px;
-
+    padding-top: 67px;
+    padding-left: 52px;
+    background-position: 2% 6%;
 }
-
 
 #outsideTemp.tstorms{
     padding-top: 34px;
@@ -285,9 +279,12 @@ width: 180px;
 }
 
 #outsideTemp.rain{
-	padding-top: 48px;
+	padding-top: 46px;
 	padding-left: 59px;
+	margin-left: -10px;
 	background-position: 60% 6%;
+	margin-right: 10px;
+
 }
 
 #weather-forecast{

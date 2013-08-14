@@ -11,11 +11,11 @@
 	<div id="forecast">
 		
 		<ul>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[0].icon }}">{{ weather.forecast.simpleforecast.forecastday[0].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}</span></li>
 		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[1].icon }}">{{ weather.forecast.simpleforecast.forecastday[1].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[1].high.fahrenheit }}</span></li>
 		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[2].icon }}">{{ weather.forecast.simpleforecast.forecastday[2].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[2].high.fahrenheit }}</span></li>
 		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[3].icon }}">{{ weather.forecast.simpleforecast.forecastday[3].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[3].high.fahrenheit }}</span></li>
 		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[4].icon }}">{{ weather.forecast.simpleforecast.forecastday[4].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[4].high.fahrenheit }}</span></li>
 		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[5].icon }}">{{ weather.forecast.simpleforecast.forecastday[5].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[5].high.fahrenheit }}</span></li>
-		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[6].icon }}">{{ weather.forecast.simpleforecast.forecastday[6].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[6].high.fahrenheit }}</span></li>
 		</ul>
 	</div>

@@ -5,7 +5,13 @@ from pymongo import Connection
 from flask import Flask
 from flask import render_template
 
+def include(filename):
+    if os.path.exists(filename): 
+        execfile(filename)
+
+
 MONGO_URL = os.environ.get('MONGOHQ_URL')
+include('config.py')
 
 # check to see if the MONGO_URL exists, otherwise just connect locally
 if MONGO_URL:
@@ -18,6 +24,8 @@ else:
 p = pusher.Pusher(app_id='51528', key='bbfd2fdfc81124a36b18', secret='c192b321e8df94b5b127')
 
 app = Flask(__name__,template_folder='static/templates')
+
+
 
 
 @app.route('/')
