@@ -1,4 +1,3 @@
-/*
 document.ontouchstart = function(e){ 
     e.preventDefault(); 
 }
@@ -15,7 +14,6 @@ $(window).on('scroll', function(e){
       $(this).scrollTop($(window).height());
    }
 });
-*/
 
 window.flag_status = '';
 window.weather;

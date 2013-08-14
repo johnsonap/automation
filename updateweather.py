@@ -62,7 +62,7 @@ windspeed =  float(datan['current_observation']['wind_mph']) * 0.868976242
 if( windspeed <1):
     wind_string = 'Calm'
 else:
-    wind_string = str(round(windspeed,2)) + ' knots, ' + datan['current_observation']['wind_dir']
+    wind_string = str(round(windspeed,1)) + ' knots, ' + datan['current_observation']['wind_dir']
 
 
 datan['current_observation']['wind_string'] = wind_string
