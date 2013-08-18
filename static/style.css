@@ -6,7 +6,7 @@ html {
 }
 
 body{
-    overflow: scroll; height: 100%; width: 100%;
+    overflow: hidden; height: 100%; width: 100%;
 }
 
 #lights{
@@ -159,6 +159,25 @@ width: 180px;
 
 #thermostat .btn-group{
     margin-bottom: 10px;
+
+}
+#thermostat .btn-group .btn{
+    border-radius: 0px;
+    border-right-width:0px;
+    padding-left: 13px;
+}
+
+#thermostat .btn-group .btn:last-child{
+    border-right-width: 1px;
+    padding-left: 13px;
+}
+#thermostat .btn-group .btn.btn-primary{
+    border-right-width: 1px;
+    padding-left: 13px;
+}
+#thermostat .btn-group .btn.btn-primary + .btn{
+    padding-left: 14px;
+    border-left-width: 0px;
 }
 
 .pane{
