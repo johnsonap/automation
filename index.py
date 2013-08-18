@@ -29,39 +29,41 @@ app = Flask(__name__,template_folder='static/templates')
 
 @app.route('/')
 def index():
-    weather_data = db.weather.find_one({'data':'weather'})['json']
-    hvac_data = db.hvac.find_one({'data':'hvac'})['json']
+    weather_data = db.settings.find_one({'data':'weather'})['json']
+    hvac_data = db.settings.find_one({'data':'hvac'})['json']
     return render_template('index.html',weather=weather_data, hvac=hvac_data)
 
 @app.route('/hvac')
 def hvac():
-    data = db.hvac.find_one({'data':'hvac'})
+    data = db.settings.find_one({'data':'hvac'})
     if not data:
         data = {'data':'hvac', 'json':"json"}
     else:
         data['json'] = "json"
-    db.hvac.save(data)
+    db.settings.save(data)
     return "ok", 200, {'Content-Type': 'text/plain'}
 
 @app.route('/hvac/temp/<temp>/<client_id>')
 def settemp(temp, client_id):
-    hvac_data = db.hvac.find_one({'data':'hvac'})
+    hvac_data = db.settings.find_one({'data':'hvac'})
     hvac_data['json']['current_temp'] = temp
-    db.hvac.save(hvac_data)
+    db.settings.save(hvac_data)
 
     p['hvac'].trigger('update_temp', {'temp': temp, 'id':client_id})
     return temp, 200, {'Content-Type': 'text/plain'}
     
 @app.route('/hvac/setting/<setting_one>/<setting_two>')
 def settings(setting_one, setting_two):
-    hvac_data = db.hvac.find_one({'data':'hvac'})
+    hvac_data = db.settings.find_one({'data':'hvac'})
     hvac_data['json']['hvac_setting'] = setting_one
     hvac_data['json']['on_off'] = setting_two
     p['hvac'].trigger('update_settings', {'hvac_setting': setting_one, 'on_off': setting_two})
-    db.hvac.save(hvac_data)
+    db.settings.save(hvac_data)
     return "ok", 200, {'Content-Type': 'text/plain'}
+    
 @app.route('/lights/<name>/<setting>')
 def lights(name, setting):
+    
     return "ok", 200, {'Content-Type': 'text/plain'}
 
 if __name__ == '__main__':
