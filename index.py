@@ -11,6 +11,7 @@ def include(filename):
 
 
 MONGO_URL = os.environ.get('MONGOHQ_URL')
+PUSHER_URL = os.environ.get('PUSHER_URL')
 include('config.py')
 
 # check to see if the MONGO_URL exists, otherwise just connect locally
@@ -20,8 +21,10 @@ if MONGO_URL:
 else:
     connection = Connection('localhost', 27017)
     db = connection['home_automation']
-
-p = pusher.Pusher(app_id='51528', key='bbfd2fdfc81124a36b18', secret='c192b321e8df94b5b127')
+if PUSHER_URL:
+    p = pusher.pusher_from_url()
+else:
+    p = pusher.Pusher(app_id= os.environ.get('PUSHER_APP_ID'), key=os.environ.get('PUSHER_KEY'), secret= os.environ.get('PUSHER_SECRET'))
 
 app = Flask(__name__,template_folder='static/templates')
 
