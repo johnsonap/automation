@@ -24,7 +24,7 @@ width: 180px;
 #current-temp{
     height: 142px;
     border: 1px solid #ccc;
-    margin-bottom: 32px;
+    margin-bottom: 33px;
     background: #fff;
 }
 .change-temp a:hover{
@@ -149,7 +149,7 @@ width: 180px;
 }
 
 .inside{
-    margin-top: 15px;
+    margin-top: 10px;
 }
 #current-temp .change-temp{
     margin-top: -3px;
