@@ -2,7 +2,9 @@ document.ontouchstart = function(e){
     e.preventDefault(); 
 }
 
-
+$(function() {
+    FastClick.attach(document.body);
+});
 
 
 $(window).on('scroll', function(e){
@@ -28,13 +30,13 @@ function sigFigs(n, sig) {
 }
 
 
-$('#sidebar').fastClick(function(e){
+$('#sidebar').click(function(e){
     $('.pane').hide();
     window.e = e;
     $('#' + $(e.target).attr('data-pane')).css('display','block');
 });
 
-$('.hvac a').fastClick(function(e){
+$('.hvac a').click(function(e){
 
     window.e = e;
     setting = '';
@@ -91,10 +93,10 @@ $('.hvac a').fastClick(function(e){
     
 });
 
-$('#temp-plus').fastClick(function(e){
+$('#temp-plus').click(function(e){
     addTemp(1);
 });
-$('#temp-minus').fastClick(function(e){
+$('#temp-minus').click(function(e){
     addTemp(-1);    
 });
 
