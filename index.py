@@ -28,9 +28,6 @@ else:
 
 app = Flask(__name__,template_folder='static/templates')
 
-
-
-
 @app.route('/')
 def index():
 
