@@ -28,14 +28,7 @@ flag_page = str(flag_page)
 flag_page = flag_page[:flag_page.index('meta')-2]+'}}}'
 flag_data = json.loads(flag_page)
 flag_color = flag_data['data']['data']['result'][0]['code']
-data = db.flag.find_one({'data':'flag'})
-if not data:
-    data = {'data':'flag', 'status':flag_color}
-else:
-    data['status'] = flag_color
-db.flag.save(data)
 datan['current_observation']['temp_f_round'] = int(round(datan['current_observation']['temp_f'],0))
-
 now_time = datetime.datetime.utcnow()
 night = False
 sunset = datan['sun_phase']['sunset']

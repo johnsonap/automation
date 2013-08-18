@@ -9,7 +9,6 @@ def include(filename):
     if os.path.exists(filename): 
         execfile(filename)
 
-
 MONGO_URL = os.environ.get('MONGOHQ_URL')
 PUSHER_URL = os.environ.get('PUSHER_URL')
 include('config.py')
@@ -30,11 +29,9 @@ app = Flask(__name__,template_folder='static/templates')
 
 @app.route('/')
 def index():
-
     weather_data = db.weather.find_one({'data':'weather'})['json']
-    flag = db.flag.find_one({'data':'flag'})['status']
     hvac_data = db.hvac.find_one({'data':'hvac'})['json']
-    return render_template('index.html',weather=weather_data, flag=flag, hvac=hvac_data)
+    return render_template('index.html',weather=weather_data, hvac=hvac_data)
 
 @app.route('/hvac')
 def hvac():
@@ -62,6 +59,9 @@ def settings(setting_one, setting_two):
     hvac_data['json']['on_off'] = setting_two
     p['hvac'].trigger('update_settings', {'hvac_setting': setting_one, 'on_off': setting_two})
     db.hvac.save(hvac_data)
+    return "ok", 200, {'Content-Type': 'text/plain'}
+@app.route('/lights/<name>/<setting>')
+def lights(name, setting):
     return "ok", 200, {'Content-Type': 'text/plain'}
 
 if __name__ == '__main__':

@@ -1,411 +1,391 @@
 html {
-  font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-
+	font-family:sans-serif;
+	-webkit-text-size-adjust:100%;
+	-ms-text-size-adjust:100%;
 }
 
-body{
-    overflow: hidden; height: 100%; width: 100%;
+body {
+	overflow:hidden;
+	height:100%;
+	width:100%;
 }
 
-#lights{
-    display: none;
+#lights {
+	display:none;
 }
 
 .hvac a.btn {
-    padding: 13px;
+	padding:13px;
 }
+
 #hvac-stats {
-float: right;
-margin-right: 10px;
-width: 180px;
-}
-#current-temp{
-    height: 142px;
-    border: 1px solid #ccc;
-    margin-bottom: 33px;
-    background: #fff;
-}
-.change-temp a:hover{
-    text-decoration: none;
+	float:right;
+	margin-right:10px;
+	width:180px;
 }
 
-.change-temp a:first-child{
-    margin-left: 0px;
-}
-.change-temp a{
-  display: inline-block;
-  padding: 7px 25px;
-  margin-bottom: 0;
-  margin-left: 3px;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1.428571429;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-       -o-user-select: none;
-          user-select: none;
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
+#current-temp {
+	height:142px;
+	border:1px solid #ccc;
+	margin-bottom:33px;
+	background:#fff;
 }
 
-#main{
-    width:480px;
-    height:300px;
-    box-sizing: border-box;
-    padding-left: 70px;
+.change-temp a:hover {
+	text-decoration:none;
 }
 
-#sidebar{
-    height:300px;
-    width:60px;
-    background: #fefefe;
-    border-right: 1px solid #ddd;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    position: absolute;
-    top:0;
-    left:0;
-    cursor: pointer;
+.change-temp a:first-child {
+	margin-left:0;
 }
 
-
-
-#sidebar i{
-    pointer-events: none;
+.change-temp a {
+	display:inline-block;
+	padding:7px 25px;
+	margin-bottom:0;
+	margin-left:3px;
+	font-size:20px;
+	font-weight:700;
+	line-height:1.428571429;
+	text-align:center;
+	white-space:nowrap;
+	vertical-align:middle;
+	cursor:pointer;
+	border:1px solid transparent;
+	border-radius:0;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+	color:#333;
+	background-color:#fff;
+	border-color:#ccc;
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
 }
 
-#sidebar li{
-    border-bottom: 1px solid #ddd;
-    display: block;
-    text-align: center;
-    font-size: 1.4em;
-    padding-top: 15px;
-    padding-left: 3px;
-    text-indent: -2px;
-    height:60px;
-    width: 60px;
-    box-sizing: border-box;
+#main {
+	width:480px;
+	height:300px;
+	box-sizing:border-box;
+	padding-left:70px;
 }
 
-#sidebar li:last-child{
-    border: none;
-    padding-top: 16px;
+#sidebar {
+	height:300px;
+	width:60px;
+	background:#fefefe;
+	border-right:1px solid #ddd;
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:pointer;
 }
 
-
-
-#thermostat{
-    float: left;
-    text-align: center;
-
+#sidebar i {
+	pointer-events:none;
 }
 
-.thermostat{
-    width: 210px;
-    float: left;
-    margin-top:10px;
-}
-#weather-forecast{
-    float: left;
-    display: none;
-}
-
-#current-temp .button{
-    padding: 0 auto;
-}
-
-#current-temp .temp{
-    font-size: 7em;
-    line-height: 1.25em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin: 0 auto;
+#sidebar li {
+	border-bottom:1px solid #ddd;
+	display:block;
+	text-align:center;
+	font-size:1.4em;
+	padding-top:15px;
+	padding-left:3px;
+	text-indent:-2px;
+	height:60px;
+	width:60px;
+	box-sizing:border-box;
 }
 
-#current-temp .temp::after{
-    content: '\00B0';
+#sidebar li:last-child {
+	border:none;
+	padding-top:16px;
 }
 
-.inside, .outside {
-    width: 100%;
-    display: block;
-    padding: 6px 0px;
-    font-size: 95%;
-    margin: 10px 0;
+#thermostat {
+	float:left;
+	text-align:center;
 }
 
-.inside{
-    margin-top: 10px;
-}
-#current-temp .change-temp{
-    margin-top: -3px;
-}
-
-
-
-#thermostat .btn-group{
-    margin-bottom: 10px;
-
-}
-#thermostat .btn-group .btn{
-    border-radius: 0px;
-    border-right-width:0px;
-    padding-left: 13px;
+.thermostat {
+	width:210px;
+	float:left;
+	margin-top:10px;
 }
 
-#thermostat .btn-group .btn:last-child{
-    border-right-width: 1px;
-    padding-left: 13px;
-}
-#thermostat .btn-group .btn.btn-primary{
-    border-right-width: 1px;
-    padding-left: 13px;
-}
-#thermostat .btn-group .btn.btn-primary + .btn{
-    padding-left: 14px;
-    border-left-width: 0px;
+#weather-forecast {
+	float:left;
+	display:none;
 }
 
-.pane{
-    width: 410px;
+#current-temp .button {
+	padding:0 auto;
+}
+
+#current-temp .temp {
+	font-size:7em;
+	line-height:1.25em;
+	font-weight:700;
+	margin-bottom:5px;
+	margin:0 auto;
+}
+
+#current-temp .temp::after {
+	content:'\00B0';
+}
+
+.inside,.outside {
+	width:100%;
+	display:block;
+	padding:6px 0;
+	font-size:95%;
+	margin:10px 0;
+}
+
+.inside {
+	margin-top:10px;
+}
+
+#current-temp .change-temp {
+	margin-top:-3px;
+}
+
+#thermostat .btn-group {
+	margin-bottom:10px;
+}
+
+#thermostat .btn-group .btn {
+	border-radius:0;
+	border-right-width:0;
+	padding-left:13px;
+}
+
+#thermostat .btn-group .btn:last-child {
+	border-right-width:1px;
+	padding-left:13px;
+}
+
+#thermostat .btn-group .btn.btn-primary {
+	border-right-width:1px;
+	padding-left:13px;
+}
+
+#thermostat .btn-group .btn.btn-primary + .btn {
+	padding-left:14px;
+	border-left-width:0;
+}
+
+.pane {
+	width:410px;
 }
 
 /* weather forecast */
-
-#forecast{
-    top:199px;
-    height: 100px;
-    position: fixed;
+#forecast {
+	top:199px;
+	height:100px;
+	position:fixed;
 }
 
-
-
-#currentConditions{
-	float: left;
-	width: 410px;
-	height: auto;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+#currentConditions {
+	float:left;
+	width:410px;
+	height:auto;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
 }
 
-.icon-flag.yellow{
-    color: #FCF2A2;
-}
-.icon-flag.red, .icon-flag.doublered{
-    color: #AA0F03;
+.icon-flag.yellow {
+	color:#FCF2A2;
 }
 
-.icon-flag.green{
-    color: #5DBB58;
+.icon-flag.red,.icon-flag.doublered {
+	color:#AA0F03;
 }
 
-.icon-flag.purple{
-    color: #A178BA;
+.icon-flag.green {
+	color:#5DBB58;
 }
 
-.icon-flag.doublered::after{
-    content: "\f024";
-    display: block;
+.icon-flag.purple {
+	color:#A178BA;
 }
 
-.icon-flag{
-    font-size: 53px;
-    margin-top: -15px;
-    float: right;
-    text-shadow: 1px 1px 2px #aaa;
+.icon-flag.doublered::after {
+	content:"\f024";
+	display:block;
 }
 
-#currentConditions h3{
-    padding: 0px 15px 0 0;
+.icon-flag {
+	font-size:53px;
+	margin-top:-15px;
+	float:right;
+	text-shadow:1px 1px 2px #aaa;
 }
 
-#outsideTemp{
-	background: url('img/Climacons_huge.png');
-
-	height: 185px;
-	font-size: 34px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	float: left;
-	font-weight: bold;
-	width: 50%;
-	margin-top: 10px;
+#currentConditions h3 {
+	padding:0 15px 0 0;
 }
 
-#outsideTemp:after{
-	content: "\00B0";
+#outsideTemp {
+	background:url(img/Climacons_huge.png);
+	height:185px;
+	font-size:34px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	float:left;
+	font-weight:700;
+	width:50%;
+	margin-top:10px;
 }
 
-#lights ul{
-    margin: 0;
-    padding: 0;
-    margin-top: 10px;
+#outsideTemp:after {
+	content:"\00B0";
 }
 
-#lights li.light{
-    display: inline-block;
-    border: 1px solid #eee;
-    height: 87px;
-    width: 127px;
-    margin: 0 6px 10px 0;
-    padding: 1px 5px;
+#lights ul {
+	margin:0;
+	padding:0;
+	margin-top:10px;
 }
 
-
-#outsideTemp.partlycloudy, #outsideTemp.mostlycloudy{
-    padding-top: 94px;
-    padding-left: 36px;
-    background-position: 132% 4%;
-    margin-left: 5px;
+#lights li.light {
+	display:inline-block;
+	border:1px solid #eee;
+	height:87px;
+	width:127px;
+	margin:0 6px 10px 0;
+	padding:1px 5px;
 }
 
-#outsideTemp.night.partlycloudy, #outsideTemp.night.mostlycloudy{
-    padding-top: 81px;
-    padding-left: 37px;
-    background-position: 152% 5%;
-    margin-left:5px;
+#outsideTemp.partlycloudy,#outsideTemp.mostlycloudy {
+	padding-top:94px;
+	padding-left:36px;
+	background-position:132% 4%;
+	margin-left:5px;
 }
 
-
-
-#outsideTemp.clear{
-    padding-top: 72px;
-    padding-left: 0px;
-    background-position: -1959px -740px;
-    font-size: 24px;
-    text-align: center;
+#outsideTemp.night.partlycloudy,#outsideTemp.night.mostlycloudy {
+	padding-top:81px;
+	padding-left:37px;
+	background-position:152% 5%;
+	margin-left:5px;
 }
 
-#outsideTemp.night.clear{
-    padding-top: 100px;
-    padding-left: 87px;
-    background-position: -1272px -758px;
-    font-size: 48px;
+#outsideTemp.clear {
+	padding-top:72px;
+	padding-left:0;
+	background-position:-1959px -740px;
+	font-size:24px;
+	text-align:center;
 }
 
-
-#outsideTemp.cloudy{
-    padding-top: 67px;
-    padding-left: 52px;
-    background-position: 2% 6%;
+#outsideTemp.night.clear {
+	padding-top:100px;
+	padding-left:87px;
+	background-position:-1272px -758px;
+	font-size:48px;
 }
 
-#outsideTemp.tstorms{
-    padding-top: 34px;
-    padding-left: 56px;
-    background-position: 79% 94%;
-
-
+#outsideTemp.cloudy {
+	padding-top:67px;
+	padding-left:52px;
+	background-position:2% 6%;
 }
 
-#outsideTemp.rain{
-	padding-top: 46px;
-	padding-left: 59px;
-	margin-left: -10px;
-	background-position: 60% 6%;
-	margin-right: 10px;
-
+#outsideTemp.tstorms {
+	padding-top:34px;
+	padding-left:56px;
+	background-position:79% 94%;
 }
 
-#weather-forecast{
-    height:300px;
+#outsideTemp.rain {
+	padding-top:46px;
+	padding-left:59px;
+	margin-left:-10px;
+	background-position:60% 6%;
+	margin-right:10px;
 }
 
-#forecast li{
-	list-style: none;
-	display: block;
-	font-weight: bold;
-	float: left;
-	height: 100px;
-	width: 16.6667%;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	border-right: 1px solid #ddd;
+#weather-forecast {
+	height:300px;
+}
 
-
+#forecast li {
+	list-style:none;
+	display:block;
+	font-weight:700;
+	float:left;
+	height:100px;
+	width:16.6667%;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border-right:1px solid #ddd;
 }
 
 #forecast ul {
-    margin: 0;
-    margin-left: -10px;
-    width: 420px;
-    height: 101px;
-    padding: 0;
-    border-top:1px solid #ddd;
+	margin:0;
+	margin-left:-10px;
+	width:420px;
+	height:101px;
+	padding:0;
+	border-top:1px solid #ddd;
 }
 
-
-#forecast li:last-child{
-	border-right: none;
-
-
+#forecast li:last-child {
+	border-right:none;
 }
 
-#forecast li span{
-	text-align: center;
-	display: block;
-	padding: 5px;
-	font-size: 1em;
+#forecast li span {
+	text-align:center;
+	display:block;
+	padding:5px;
+	font-size:1em;
 }
 
-
-#forecast li span.day{
-	background: url('img/Climacons_small.png');
-	text-transform: uppercase;
-	padding-bottom: 50px;
-
+#forecast li span.day {
+	background:url(img/Climacons_small.png);
+	text-transform:uppercase;
+	padding-bottom:50px;
 }
 
-#forecast li span.temp{
-    margin-top: -4px;
-    margin-left: 3px;
+#forecast li span.temp {
+	margin-top:-4px;
+	margin-left:3px;
 }
 
-#forecast li span.day.tstorms{
-background-position: -320px -520px;
+#forecast li span.day.tstorms {
+	background-position:-320px -520px;
 }
 
-#forecast li span.day.partlycloudy, #forecast li span.day.mostlycloudy{
-background-position: -66px -15px;
+#forecast li span.day.partlycloudy,#forecast li span.day.mostlycloudy {
+	background-position:-66px -15px;
 }
 
-
-
-#forecast li span.day.chancerain{
-background-position: -321px -17px;
+#forecast li span.day.chancerain {
+	background-position:-321px -17px;
 }
 
-
-#forecast li span.day.cloudy{
-background-position: 2px -16px;
+#forecast li span.day.cloudy {
+	background-position:2px -16px;
 }
 
-#forecast li span.day.clear{
-background-position: -409px -246px;
+#forecast li span.day.clear {
+	background-position:-409px -246px;
 }
 
-#forecast li span.day.chancetstorms{
-background-position: -409px -518px;
+#forecast li span.day.chancetstorms {
+	background-position:-409px -518px;
 }
 
-
-#forecast li span:last-child:after{
-	content: "\00B0";
-
+#forecast li span:last-child:after {
+	content:"\00B0";
 }
