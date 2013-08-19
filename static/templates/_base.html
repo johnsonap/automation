@@ -25,7 +25,6 @@
     <div class="pane" id="weather-forecast">
 
             <div id="outsideTemp" class="{% if night %}night {% endif %}<%= d.current_conditions.icon %>"><%= d.current_conditions.temp_f %></div>
-        	
         	<div id="currentConditions">
         	    <h3><i class="icon-flag <%= flag %>"></i> <%= d.display_location.city %></h3><p>
         	    High: <%= d.forecast[0].high.fahrenheit %>&deg;

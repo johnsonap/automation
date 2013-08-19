@@ -1,7 +1,6 @@
 html{
 	height:300px;
 	width:480px;
-	overflow:hidden;
 }
 
 a:hover{text-decoration:none}
@@ -10,8 +9,7 @@ a:hover{text-decoration:none}
     overflow:hidden;
     width:410px;
     height:300px;
-    position:absolute;
-    left:70px;
+    margin:0 0 0 70px;
 }
 .icon-lightbulb.on{
     cursor:pointer;
@@ -53,7 +51,6 @@ a.btn{padding:13px}
 }
 
 #sidebar{
-	border-right:1px solid #ddd;
 	padding:0;
 	float:left;
 	cursor:pointer
@@ -62,7 +59,8 @@ a.btn{padding:13px}
 #sidebar i{pointer-events:none}
 
 #sidebar li{
-	border-bottom:1px solid #ddd;
+	border:1px solid #ddd;
+	border-top: 0px;
 	text-align:center;
 	font-size:1.4em;
 	padding-top:15px;
@@ -71,7 +69,7 @@ a.btn{padding:13px}
 	width:60px
 }
 
-#sidebar li:last-child{border:none}
+#sidebar li:last-child{border-bottom:none}
 
 .thermostat{
 	width:210px;
@@ -232,9 +230,7 @@ a.btn{padding:13px}
 	border-top:1px solid #ddd
 }
 
-#forecast li:last-child{
-	border-right:none;
-}
+#forecast li:last-child{border-right:none}
 
 #forecast li span{
 	text-align:center;
