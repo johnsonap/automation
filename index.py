@@ -5,13 +5,8 @@ from pymongo import Connection
 from flask import Flask
 from flask import render_template
 
-def include(filename):
-    if os.path.exists(filename): 
-        execfile(filename)
-
 MONGO_URL = os.environ.get('MONGOHQ_URL')
 PUSHER_URL = os.environ.get('PUSHER_URL')
-include('config.py')
 
 # check to see if the MONGO_URL exists, otherwise just connect locally
 if MONGO_URL:
