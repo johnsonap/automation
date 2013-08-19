@@ -2,6 +2,9 @@ html {
 	font-family:sans-serif;
 	-webkit-text-size-adjust:100%;
 	-ms-text-size-adjust:100%;
+	height: 300px;
+	width: 480px;
+	overflow: hidden;
 }
 
 body {

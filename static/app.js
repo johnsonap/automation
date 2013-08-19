@@ -2,9 +2,6 @@ document.ontouchstart = function(e){
     e.preventDefault(); 
 }
 
-
-
-
 $(window).on('scroll', function(e){
    scrollAmount = $(this).scrollTop();
    if(scrollAmount < 1){
@@ -19,14 +16,12 @@ window.flag_status = '';
 window.weather;
 window.hvac_settings;
 
-
 function sigFigs(n, sig) {
     if(n == 0){ return 0;}
     var mult = Math.pow(10,
         sig - Math.floor(Math.log(n) / Math.LN10) - 1);
     return Math.round(n * mult) / mult;
 }
-
 
 $('#sidebar').fastClick(function(e){
     $('.pane').removeClass('active');    
@@ -133,17 +128,6 @@ weather_channel.bind('current_conditions', function(data) {
     });
     var weather_template = $.get('static/templates/weather.html')
     $('#weather-forecast').html(_.template(weather_template.responseText, weather));    
-    
-    /*
-$('#outsideTemp').html(Math.round(data.current_conditions.temp_f));
-    var night = '';
-    $('#outsideTemp').attr('class', night + data.current_conditions.icon) 
-    wind = (sigFigs(data.current_conditions.wind_mph*.8,2));
-    wind_str = wind+ ' knots, ' + data.current_conditions.wind_dir;
-    if (wind < 1) wind_str = "Calm";
-    $('#currentConditions p').html('High: ' + data.forecast[0].high.fahrenheit + '&deg;<br>Low: ' + data.forecast[0].low.fahrenheit +'&deg;<br>Wind: '+ wind_str +'<br>Relative Humidity: ' + data.current_conditions.relative_humidity)
-    $('.outside span').html(Math.round(data.current_conditions.temp_f));
-*/
 });
 
 hvac_channel.bind('update_temp', function(data) {
@@ -168,8 +152,7 @@ hvac_channel.bind('update_settings', function(data) {
     
     
     
-    
-    
+
     
     
     
