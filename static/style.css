@@ -157,12 +157,21 @@ a.btn{padding:13px}
     float: left;
     display: block;
     line-height: .7em;
+    pointer-events: none;
 }
 
 .light .icon-lightbulb{color:#808080}
 .light.on .icon-lightbulb{color:#FDF677}
 
+/* settings panel */
 
+#settings form{
+    margin-top: 10px;
+}
+
+#settings .form-group{
+    width: 200px;
+}
 
 /* weather forecast */
 #fc{
