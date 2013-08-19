@@ -8,7 +8,7 @@
 	       <br/>Wind: {{weather.current_observation.wind_string }}
 	       <br/>Relative Humidity: {{ weather.current_observation.relative_humidity }}</p></div>
 	    </div>
-	<div id="forecast">
+	<div id="fc">
 		
 		<ul>
 		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[0].icon }}">{{ weather.forecast.simpleforecast.forecastday[0].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}&deg;</span></li>

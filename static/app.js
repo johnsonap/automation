@@ -94,6 +94,16 @@ $('#temp-minus').fastClick(function(e){
     addTemp(-1);    
 });
 
+$('.light i').fastClick(function(e){
+    console.log('sdfsdf');
+    $(e.target).toggleClass('on');
+    var light_status = 'off'
+    if($(e.target).hasClass('on')){
+        light_status = 'on';
+    }
+    $.get('/lights/' + $(e.target).parent().attr('data-id')+'/' +light_status);
+})
+
 function addTemp(index){
     $temp = $('#current-temp .temp');
     temp = parseInt($temp.html()) + index
@@ -116,10 +126,8 @@ window.id = Math.floor(new Date().getTime()*Math.random(1,10));
 var pusher = new Pusher('bbfd2fdfc81124a36b18');
 
 var weather_channel = pusher.subscribe('weather');
-
 var hvac_channel = pusher.subscribe('hvac');
-
-var flag_channel = pusher.subscribe('flag');
+var light_channel = pusher.subscribe('lights');
 
 weather_channel.bind('current_conditions', function(data) {
     window.weather = data;
@@ -136,9 +144,14 @@ hvac_channel.bind('update_temp', function(data) {
     }
 });
 
-flag_channel.bind('update_flag', function(data) {
-    window.flag_status = data.flag_color
-    $('.icon-flag').attr('class', 'icon-flag ' + data.flag_color);
+light_channel.bind('update_lights', function(data) {
+    console.log(data);
+    if(data.status == 'on'){
+        $('[data-id="'+data.name+'"] i').addClass('on');
+    }
+    else{
+        $('[data-id="'+data.name+'"] i').removeClass('on');
+    }
 });
 
 hvac_channel.bind('update_settings', function(data) {

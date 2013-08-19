@@ -1,6 +1,6 @@
 <ul>
     {% for light in lights %}
-        <li class="light">{{ light.name }} <i class="icon-lightbulb {{ light.status }}"></i></li>
+        <li data-id="{{ light.name }}" class="light">{{ light.name }} <i class="icon-lightbulb{% if light.status == 'on' %} on{% endif %}"></i></li>
     {% endfor %}
 
 </ul>

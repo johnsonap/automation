@@ -11,20 +11,38 @@ a:hover{text-decoration:none}
     height:300px;
     margin:0 0 0 70px;
 }
-.icon-lightbulb.on{
-    cursor:pointer;
-    color:#FDF677;
-    padding:4px 0 0 3px;
-    font-size:24px;
+
+
+/* main page stuff*/
+
+.pane{
+	width:410px;
+	display:none
 }
-.icon-lightbulb.off{
-    cursor:pointer;
-    color:#808080;
-    padding:4px 0 0 3px;
-    font-size:24px;
+.pane.active{display: block}
+
+#sidebar{
+	padding:0;
+	float:left;
+	cursor:pointer
 }
 
-a.btn{padding:13px}
+#sidebar i{pointer-events:none}
+
+#sidebar li{
+	border:1px solid #ddd;
+	border-top: 0px;
+	text-align:center;
+	font-size:1.4em;
+	padding-top:15px;
+	padding-left:0px;
+	height:60px;
+	width:60px
+}
+
+#sidebar li:last-child{border-bottom:none}
+
+/* thermostat pane */
 
 #hvac-stats{
 	float:right;
@@ -50,32 +68,13 @@ a.btn{padding:13px}
 	background-color:#fff
 }
 
-#sidebar{
-	padding:0;
-	float:left;
-	cursor:pointer
-}
-
-#sidebar i{pointer-events:none}
-
-#sidebar li{
-	border:1px solid #ddd;
-	border-top: 0px;
-	text-align:center;
-	font-size:1.4em;
-	padding-top:15px;
-	padding-left:0px;
-	height:60px;
-	width:60px
-}
-
-#sidebar li:last-child{border-bottom:none}
-
 .thermostat{
 	width:210px;
 	float:left;
 	margin-top:10px
 }
+
+a.btn{padding:13px}
 
 #current-temp .button{padding:0 auto}
 
@@ -113,22 +112,16 @@ a.btn{padding:13px}
 	border-left-width:0
 }
 
-.pane{
-	width:410px;
-	display:none
-}
-.pane.active{display: block}
 
 /* lights pane */
 
 #lights ul{
-	margin:0;
+	margin:10px 0 0 0;
 	padding:0;
-	margin-top:10px
 }
 
 #lights li.light{
-	display:inline-block;
+    float: left;
 	border:1px solid #eee;
 	height:87px;
 	font-size: 18px;
@@ -138,11 +131,60 @@ a.btn{padding:13px}
 	padding:1px 5px
 }
 
+.light i{
+    cursor:pointer;
+    padding:4px 0 0 3px;
+    font-size:24px;
+}
+
+.light .icon-lightbulb{color:#808080}
+.light .icon-lightbulb.on{color:#FDF677}
+
+
+
 /* weather forecast */
-#forecast{
+#fc{
 	top:199px;
 	position:fixed
 }
+
+#fc li{
+	list-style:none;
+	font-weight:700;
+	float:left;
+	width:16.6667%;
+	border-right:1px solid #ddd
+}
+
+#fc ul{
+	margin:0 0 0 -10px;
+	width:420px;
+	height:101px;
+	padding:0;
+	border-top:1px solid #ddd
+}
+
+#fc li:last-child{border-right:none}
+
+#fc span{
+	text-align:center;
+	display:block;
+	padding:5px;
+	font-size:1em
+}
+
+#fc .day{
+	background:url(img/Climacons_small.png);
+	text-transform:uppercase;
+	padding-bottom:50px
+}
+#fc span.temp{margin-top:-4px 0 0 -3px}
+#fc .tstorms{background-position:-320px -520px}
+#fc .partlycloudy,#fc .mostlycloudy{background-position:-66px -15px}
+#fc .chancerain{background-position:-321px -17px}
+#fc .cloudy{background-position:2px -16px}
+#fc .clear{background-position:-409px -246px}
+#fc .chancetstorms{background-position:-409px -518px}
 
 .icon-flag.yellow{color:#FCF2A2}
 .icon-flag.red,.icon-flag.doublered{color:#AA0F03}
@@ -211,43 +253,3 @@ a.btn{padding:13px}
 	margin:0 10px 0 -10px;
 	background-position:60% 7%
 }
-
-#forecast li{
-	list-style:none;
-	display:block;
-	font-weight:700;
-	float:left;
-	height:100px;
-	width:16.6667%;
-	border-right:1px solid #ddd
-}
-
-#forecast ul{
-	margin:0 0 0 -10px;
-	width:420px;
-	height:101px;
-	padding:0;
-	border-top:1px solid #ddd
-}
-
-#forecast li:last-child{border-right:none}
-
-#forecast li span{
-	text-align:center;
-	display:block;
-	padding:5px;
-	font-size:1em
-}
-
-#forecast li span.day{
-	background:url(img/Climacons_small.png);
-	text-transform:uppercase;
-	padding-bottom:50px
-}
-#forecast li span.temp{margin-top:-4px 0 0 -3px}
-#forecast li span.day.tstorms{background-position:-320px -520px}
-#forecast li span.day.partlycloudy,#forecast li span.day.mostlycloudy{background-position:-66px -15px}
-#forecast li span.day.chancerain{background-position:-321px -17px}
-#forecast li span.day.cloudy{background-position:2px -16px}
-#forecast li span.day.clear{background-position:-409px -246px}
-#forecast li span.day.chancetstorms{background-position:-409px -518px}

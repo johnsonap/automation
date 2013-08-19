@@ -29,7 +29,7 @@ def index():
     light_data = db.settings.find_one({'data':'lights'})['light_list']
     settings = db.settings.find_one({'data':'settings'})['json']
     return render_template('index.html',weather=weather_data, hvac=hvac_data, lights=light_data, settings=settings)
-    
+
 @app.route('/settings/current_tab/<tab>')
 def set_tab(tab):
     setting_data = db.settings.find_one({'data':'settings'})
@@ -44,18 +44,24 @@ def settemp(temp, client_id):
     db.settings.save(hvac_data)
     p['hvac'].trigger('update_temp', {'temp': temp, 'id':client_id})
     return temp, 200, {'Content-Type': 'text/plain'}
-    
+
 @app.route('/hvac/setting/<setting_one>/<setting_two>')
 def settings(setting_one, setting_two):
     hvac_data = db.settings.find_one({'data':'hvac'})
     hvac_data['json']['hvac_setting'] = setting_one
     hvac_data['json']['on_off'] = setting_two
+    db.settings.save(hvac_data)
     p['hvac'].trigger('update_settings', {'hvac_setting': setting_one, 'on_off': setting_two})
     return "ok", 200, {'Content-Type': 'text/plain'}
     
-@app.route('/lights/<name>/<setting>')
-def lights(name, setting):
-    hvac_data = db.settings.find_one({'data':'lights'})
+@app.route('/lights/<name>/<status>')
+def lights(name, status):
+    light_data = db.settings.find_one({'data':'lights'})
+    for light in light_data['light_list']:
+        if light['name'] == name:
+            light['status'] = status
+    db.settings.save(light_data)
+    p['lights'].trigger('update_lights', {'name': name, 'status': status})
     return "ok", 200, {'Content-Type': 'text/plain'}
 
 if __name__ == '__main__':
