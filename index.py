@@ -47,7 +47,6 @@ def settemp(temp, client_id):
     hvac_data = db.settings.find_one({'data':'hvac'})
     hvac_data['json']['current_temp'] = temp
     db.settings.save(hvac_data)
-
     p['hvac'].trigger('update_temp', {'temp': temp, 'id':client_id})
     return temp, 200, {'Content-Type': 'text/plain'}
     
@@ -57,7 +56,6 @@ def settings(setting_one, setting_two):
     hvac_data['json']['hvac_setting'] = setting_one
     hvac_data['json']['on_off'] = setting_two
     p['hvac'].trigger('update_settings', {'hvac_setting': setting_one, 'on_off': setting_two})
-#     db.settings.save(hvac_data)
     return "ok", 200, {'Content-Type': 'text/plain'}
     
 @app.route('/lights/<name>/<setting>')
