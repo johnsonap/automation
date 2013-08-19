@@ -4,12 +4,13 @@
     <li class="{% if settings.current_tab == 'weather-forecast' %}active{% endif%}"data-pane="weather-forecast"><i class="icon-umbrella"></i></li>
     <li class="{% if settings.current_tab == 'lights' %}active{% endif%}" data-pane="lights"><i class="icon-lightbulb"></i></li>
     <li class="{% if settings.current_tab == 'charts' %}active{% endif%}"><i class="icon-bar-chart"></i></li>
-    <li class="{% if settings.current_tab == 'settings' %}active{% endif%}"><i class="icon-cogs"></i></li>
+    <li class="{% if settings.current_tab == 'settings' %}active{% endif%}" data-pane="settings"><i class="icon-cogs"></i></li>
 </ul>
 <div id="pane-holder">
     <div class="pane{% if settings.current_tab == 'lights' %} active{% endif%}" id="lights">{% include "lights.html" %}</div>
     <div class="pane{% if settings.current_tab == 'thermostat' %} active{% endif%}" id="thermostat">{% include "thermostat.html" %}</div>
     <div class="pane{% if settings.current_tab == 'weather-forecast' %} active{% endif%}" id="weather-forecast">{% include "weather.html" %}</div>
+    <div class="pane{% if settings.current_tab == 'settings' %} active{% endif%}" id="settings">{% include "settings.html" %}</div>
 </div>
 {% endblock %}
 

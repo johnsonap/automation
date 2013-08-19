@@ -94,8 +94,8 @@ $('#temp-minus').fastClick(function(e){
     addTemp(-1);    
 });
 
-$('.light i').fastClick(function(e){
-    console.log('sdfsdf');
+$('.light:not(.control)').fastClick(function(e){
+
     $(e.target).toggleClass('on');
     var light_status = 'off'
     if($(e.target).hasClass('on')){
@@ -145,12 +145,31 @@ hvac_channel.bind('update_temp', function(data) {
 });
 
 light_channel.bind('update_lights', function(data) {
-    console.log(data);
+
     if(data.status == 'on'){
         $('[data-id="'+data.name+'"] i').addClass('on');
     }
     else{
         $('[data-id="'+data.name+'"] i').removeClass('on');
+    }
+});
+
+$('.control').fastClick(function(e){
+    if($(e.target).hasClass('on')){
+        $.get('/lights/on');
+    }
+    else{
+        $.get('/lights/off');
+    }
+});
+
+light_channel.bind('all_lights', function(data) {
+
+    if(data.status == 'on'){
+        $('.light:not(.control)').addClass('on');
+    }
+    else{
+        $('.light:not(.control)').removeClass('on');
     }
 });
 

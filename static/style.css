@@ -16,7 +16,7 @@ a:hover{text-decoration:none}
 /* main page stuff*/
 
 .pane{
-	width:410px;
+	width:400px;
 	display:none
 }
 .pane.active{display: block}
@@ -46,7 +46,6 @@ a:hover{text-decoration:none}
 
 #hvac-stats{
 	float:right;
-	margin-right:10px;
 	width:180px;
 }
 
@@ -117,28 +116,51 @@ a.btn{padding:13px}
 
 #lights ul{
 	margin:10px 0 0 0;
+	width: 410px;
 	padding:0;
 }
 
 #lights li.light{
     float: left;
-	border:1px solid #eee;
-	height:87px;
-	font-size: 18px;
-	font-weight: 700;
-	width: 195px;
-	margin:0 6px 10px 0;
-	padding:1px 5px
+    display: block;
+    border: 1px solid #eee;
+    height: 48px;
+    font-size: 15px;
+    font-weight: 700;
+    width: 195px;
+    margin: 0 10px 10px 0;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.light.control{
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+#lights li.control.on{
+    background: #6EA26D;
+    border-color: #4A734A;
+}
+
+#lights li.control.off{
+    background: #B55E5A;
+    border-color: #904541;
 }
 
 .light i{
-    cursor:pointer;
-    padding:4px 0 0 3px;
-    font-size:24px;
+    cursor: pointer;
+    padding: 0px 10px 0px 0px;
+    font-size: 34px;
+    float: left;
+    display: block;
+    line-height: .7em;
 }
 
 .light .icon-lightbulb{color:#808080}
-.light .icon-lightbulb.on{color:#FDF677}
+.light.on .icon-lightbulb{color:#FDF677}
 
 
 
@@ -199,7 +221,6 @@ a.btn{padding:13px}
 .icon-flag{
 	font-size:33px;
 	margin-top:-15px;
-	margin-right:10px;
 	float:right;
 	text-shadow:1px 1px 2px #aaa
 }

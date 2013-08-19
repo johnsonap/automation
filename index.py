@@ -64,5 +64,25 @@ def lights(name, status):
     p['lights'].trigger('update_lights', {'name': name, 'status': status})
     return "ok", 200, {'Content-Type': 'text/plain'}
 
+@app.route('/lights/off')
+def lights_off():
+    light_data = db.settings.find_one({'data':'lights'})
+    for light in light_data['light_list']:
+        light['status'] = 'off'
+    db.settings.save(light_data)
+    p['lights'].trigger('all_lights', {'status': 'off'})
+    return "ok", 200, {'Content-Type': 'text/plain'}
+
+@app.route('/lights/on')
+def lights_on():
+    light_data = db.settings.find_one({'data':'lights'})
+    for light in light_data['light_list']:
+        light['status'] = 'on'
+    db.settings.save(light_data)
+    p['lights'].trigger('all_lights', {'status': 'on'})
+    return "ok", 200, {'Content-Type': 'text/plain'}
+    
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
