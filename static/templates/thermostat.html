@@ -1,6 +1,6 @@
 <div class="thermostat">
     <div id="current-temp">
-        <div class="temp">{{hvac.current_temp}}</div>
+        <div class="temp">{{hvac.current_temp}}&deg;</div>
         <div class="change-temp">
             <a id="temp-minus" ><i class="icon-minus"></i></a>
             <a id="temp-plus" ><i class="icon-plus"></i></a>
@@ -22,6 +22,6 @@
 </div>
 
 <div id="hvac-stats">
-    <span class="inside label label-info">Current House Temp <span>{{hvac.inside_temp}}&deg;</span></span>
-    <span class="outside label label-success">Current Outside Temp <span>{{ weather.current_observation.temp_f|round|int }}&deg;</span></span>
+    <span class="temps label label-info">Current House Temp <span>{{hvac.inside_temp}}&deg;</span></span>
+    <span class="temps label label-success">Current Outside Temp <span>{{ weather.current_observation.temp_f|round|int }}&deg;</span></span>
 </div>

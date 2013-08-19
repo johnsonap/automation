@@ -1,27 +1,15 @@
-
 {% extends "_base.html" %}{% block content %}
-
-    <div id="main">
-        <ul id="sidebar">
-            <li class="{% if settings.current_tab == 'thermostat' %}active{% endif%}" data-pane="thermostat"><i class="icon-dashboard"></i></li>
-            <li class="{% if settings.current_tab == 'weather-forecast' %}active{% endif%}"data-pane="weather-forecast"><i class="icon-umbrella"></i></li>
-            <li class="{% if settings.current_tab == 'lights' %}active{% endif%}" data-pane="lights"><i class="icon-lightbulb"></i></li>
-            <li class="{% if settings.current_tab == 'charts' %}active{% endif%}"><i class="icon-bar-chart"></i></li>
-            <li class="{% if settings.current_tab == 'settings' %}active{% endif%}"><i class="icon-cogs"></i></li>
-        </ul>
-        <div id="pane-holder">
-            <div class="pane {% if settings.current_tab == 'lights' %}active{% endif%}" id="lights">
-            {% include "lights.html" %} 
-            </div>
-    
-            <div class="pane {% if settings.current_tab == 'thermostat' %}active{% endif%}" id="thermostat">
-            {% include "thermostat.html" %}     
-            </div>
-            
-            <div class="pane {% if settings.current_tab == 'weather-forecast' %}active{% endif%}" id="weather-forecast">
-            {% include "weather.html" %} 
-            </div>
-        </div>
-    </div>
+<ul id="sidebar">
+    <li class="{% if settings.current_tab == 'thermostat' %}active{% endif%}" data-pane="thermostat"><i class="icon-dashboard"></i></li>
+    <li class="{% if settings.current_tab == 'weather-forecast' %}active{% endif%}"data-pane="weather-forecast"><i class="icon-umbrella"></i></li>
+    <li class="{% if settings.current_tab == 'lights' %}active{% endif%}" data-pane="lights"><i class="icon-lightbulb"></i></li>
+    <li class="{% if settings.current_tab == 'charts' %}active{% endif%}"><i class="icon-bar-chart"></i></li>
+    <li class="{% if settings.current_tab == 'settings' %}active{% endif%}"><i class="icon-cogs"></i></li>
+</ul>
+<div id="pane-holder">
+    <div class="pane{% if settings.current_tab == 'lights' %} active{% endif%}" id="lights">{% include "lights.html" %}</div>
+    <div class="pane{% if settings.current_tab == 'thermostat' %} active{% endif%}" id="thermostat">{% include "thermostat.html" %}</div>
+    <div class="pane{% if settings.current_tab == 'weather-forecast' %} active{% endif%}" id="weather-forecast">{% include "weather.html" %}</div>
+</div>
 {% endblock %}
 

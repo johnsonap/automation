@@ -103,7 +103,7 @@ function addTemp(index){
     if(temp < 65){
         temp = 90;
     }
-    $temp.html(temp)
+    $temp.html(temp + '&deg;')
     $.get('hvac/temp/'+temp + '/'+ window.id)
     
 }

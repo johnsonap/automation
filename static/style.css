@@ -1,417 +1,257 @@
-html {
-	font-family:sans-serif;
-	-webkit-text-size-adjust:100%;
-	-ms-text-size-adjust:100%;
-	height: 300px;
-	width: 480px;
-	overflow: hidden;
+html{
+	height:300px;
+	width:480px;
+	overflow:hidden;
 }
 
-body {
-	overflow:hidden;
-	height:100%;
-	width:100%;
-}
+a:hover{text-decoration:none}
 
 #pane-holder{
-    height: 300px;
-    overflow: hidden;
-    width: 420px;
-    position: absolute;
-    left: 60px;
-    top: 0;
+    overflow:hidden;
+    width:410px;
+    height:300px;
+    position:absolute;
+    left:70px;
 }
-
 .icon-lightbulb.on{
-    cursor: pointer;
-    color: #FDF677;
-    padding-left: 3px;
-    padding-top: 4px;
-    font-size: 24px;
+    cursor:pointer;
+    color:#FDF677;
+    padding:4px 0 0 3px;
+    font-size:24px;
 }
 .icon-lightbulb.off{
-    cursor: pointer;
-    color: #808080;
-    padding-left: 3px;
-    padding-top: 4px;
-    font-size: 24px;
+    cursor:pointer;
+    color:#808080;
+    padding:4px 0 0 3px;
+    font-size:24px;
 }
 
-.hvac a.btn {
-	padding:13px;
-}
+a.btn{padding:13px}
 
-#hvac-stats {
+#hvac-stats{
 	float:right;
 	margin-right:10px;
 	width:180px;
 }
 
-#current-temp {
+#current-temp{
 	height:142px;
 	border:1px solid #ccc;
 	margin-bottom:33px;
-	background:#fff;
-}
-
-.change-temp a:hover {
-	text-decoration:none;
-}
-
-.change-temp a:first-child {
-	margin-left:0;
-}
-
-.change-temp a {
-	display:inline-block;
-	padding:7px 25px;
-	margin-bottom:0;
-	margin-left:3px;
-	font-size:20px;
-	font-weight:700;
-	line-height:1.428571429;
 	text-align:center;
-	white-space:nowrap;
-	vertical-align:middle;
+}
+
+.change-temp a{
+	display:inline-block;
+	padding:10px 30px;
 	cursor:pointer;
-	border:1px solid transparent;
-	border-radius:0;
+	border:1px solid #ccc;
 	-webkit-user-select:none;
-	-moz-user-select:none;
-	-ms-user-select:none;
-	-o-user-select:none;
 	user-select:none;
 	color:#333;
-	background-color:#fff;
-	border-color:#ccc;
-	position:relative;
-	display:inline-block;
-	vertical-align:middle;
+	background-color:#fff
 }
 
-#main {
-	width:480px;
-	height:300px;
-	box-sizing:border-box;
-	padding-left:70px;
-}
-
-#sidebar {
-	height:300px;
-	width:60px;
-	background:#fefefe;
+#sidebar{
 	border-right:1px solid #ddd;
-	margin:0;
 	padding:0;
-	box-sizing:border-box;
-	position:absolute;
-	top:0;
-	left:0;
-	cursor:pointer;
+	float:left;
+	cursor:pointer
 }
 
-#sidebar i {
-	pointer-events:none;
-}
+#sidebar i{pointer-events:none}
 
-#sidebar li {
+#sidebar li{
 	border-bottom:1px solid #ddd;
-	display:block;
 	text-align:center;
 	font-size:1.4em;
 	padding-top:15px;
-	padding-left:3px;
-	text-indent:-2px;
+	padding-left:0px;
 	height:60px;
-	width:60px;
-	box-sizing:border-box;
+	width:60px
 }
 
-#sidebar li:last-child {
-	border:none;
-	padding-top:16px;
-}
+#sidebar li:last-child{border:none}
 
-#thermostat {
-	text-align:center;
-}
-
-.thermostat {
+.thermostat{
 	width:210px;
 	float:left;
-	margin-top:10px;
+	margin-top:10px
 }
 
-#current-temp .button {
-	padding:0 auto;
-}
+#current-temp .button{padding:0 auto}
 
-#current-temp .temp {
+#current-temp .temp{
 	font-size:7em;
-	line-height:1.25em;
-	font-weight:700;
-	margin-bottom:5px;
-	margin:0 auto;
+	line-height:1.25em
 }
 
-#current-temp .temp::after {
-	content:'\00B0';
-}
-
-.inside,.outside {
-	width:100%;
+.temps{
 	display:block;
-	padding:6px 0;
-	font-size:95%;
-	margin:10px 0;
+	padding:6px;
+	margin:10px 0
 }
 
-.inside {
-	margin-top:10px;
-}
+#thermostat .btn-group{margin-bottom:10px}
 
-#current-temp .change-temp {
-	margin-top:-3px;
-}
-
-#thermostat .btn-group {
-	margin-bottom:10px;
-}
-
-#thermostat .btn-group .btn {
+#thermostat .btn{
 	border-radius:0;
 	border-right-width:0;
-	padding-left:13px;
+	padding-left:13px
 }
 
-#thermostat .btn-group .btn:last-child {
+#thermostat .btn:last-child{
 	border-right-width:1px;
-	padding-left:13px;
+	padding-left:13px
 }
 
-#thermostat .btn-group .btn.btn-primary {
+#thermostat .btn.btn-primary{
 	border-right-width:1px;
-	padding-left:13px;
+	padding-left:13px
 }
 
-#thermostat .btn-group .btn.btn-primary + .btn {
+#thermostat .btn.btn-primary + .btn{
 	padding-left:14px;
-	border-left-width:0;
+	border-left-width:0
 }
 
-.pane {
+.pane{
 	width:410px;
-	float: right;
-	display: none;
+	display:none
 }
-.pane.active{
-    display: block;
-}
+.pane.active{display: block}
 
+/* lights pane */
 
-
-/* weather forecast */
-#forecast {
-	top:199px;
-	height:100px;
-	position:fixed;
-}
-
-#currentConditions {
-	float:left;
-	width:410px;
-	height:auto;
-	box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-}
-
-.icon-flag.yellow {
-	color:#FCF2A2;
-}
-
-.icon-flag.red,.icon-flag.doublered {
-	color:#AA0F03;
-}
-
-.icon-flag.green {
-	color:#5DBB58;
-}
-
-.icon-flag.purple {
-	color:#A178BA;
-}
-
-.icon-flag.doublered::after {
-	content:"\f024";
-	display:block;
-}
-
-.icon-flag {
-	font-size:53px;
-	margin-top:-15px;
-	float:right;
-	text-shadow:1px 1px 2px #aaa;
-}
-
-#currentConditions h3 {
-	padding:0 15px 0 0;
-}
-
-#outsideTemp {
-	background:url(img/Climacons_huge.png);
-	height:185px;
-	font-size:34px;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	box-sizing:border-box;
-	float:left;
-	font-weight:700;
-	width:50%;
-	margin-top:10px;
-}
-
-#outsideTemp:after {
-	content:"\00B0";
-}
-
-#lights ul {
+#lights ul{
 	margin:0;
 	padding:0;
-	margin-top:10px;
+	margin-top:10px
 }
 
-#lights li.light {
+#lights li.light{
 	display:inline-block;
 	border:1px solid #eee;
 	height:87px;
 	font-size: 18px;
-	font-weight: bold;
+	font-weight: 700;
 	width: 195px;
 	margin:0 6px 10px 0;
-	padding:1px 5px;
+	padding:1px 5px
 }
 
-#outsideTemp.partlycloudy,#outsideTemp.mostlycloudy {
-	padding-top:94px;
-	padding-left:36px;
+/* weather forecast */
+#forecast{
+	top:199px;
+	position:fixed
+}
+
+.icon-flag.yellow{color:#FCF2A2}
+.icon-flag.red,.icon-flag.doublered{color:#AA0F03}
+.icon-flag.green{color:#5DBB58}
+.icon-flag.purple{color:#A178BA}
+
+.icon-flag.doublered::after{
+	content:"\f024";
+	display:block
+}
+
+.icon-flag{
+	font-size:33px;
+	margin-top:-15px;
+	margin-right:10px;
+	float:right;
+	text-shadow:1px 1px 2px #aaa
+}
+
+#ot{
+	background:url(img/Climacons_huge.png);
+	height:185px;
+	font-size:34px;
+	float:left;
+	font-weight:700;
+	width:50%;
+}
+
+#ot.partlycloudy,#ot.mostlycloudy{
+	padding:94px 0 0 36px;
 	background-position:132% 4%;
-	margin-left:5px;
+	margin-left:5px
 }
 
-#outsideTemp.night.partlycloudy,#outsideTemp.night.mostlycloudy {
-	padding-top:81px;
-	padding-left:37px;
+#ot.night.partlycloudy,#ot.night.mostlycloudy{
+	padding:81px 0 0 37px;
 	background-position:152% 5%;
-	margin-left:5px;
+	margin-left:5px
 }
 
-#outsideTemp.clear {
-	padding-top:72px;
-	padding-left:0;
+#ot.clear{
+	padding:72px 0 0 0;
 	background-position:-1959px -740px;
 	font-size:24px;
-	text-align:center;
+	text-align:center
 }
 
-#outsideTemp.night.clear {
-	padding-top:100px;
-	padding-left:87px;
+#ot.night.clear{
+	padding:100px 0 0 87px;
 	background-position:-1272px -758px;
-	font-size:48px;
+	font-size:48px
 }
 
-#outsideTemp.cloudy {
-	padding-top:67px;
-	padding-left:52px;
-	background-position:2% 6%;
+#ot.cloudy{
+	padding:67px 0 0 52px;
+	background-position:2% 6%
 }
 
-#outsideTemp.tstorms {
-	padding-top:34px;
-	padding-left:56px;
-	background-position:79% 94%;
+#ot.tstorms{
+	padding:34px 0 0 56px;
+	background-position:79% 94%
 }
 
-#outsideTemp.rain {
-	padding-top:46px;
-	padding-left:59px;
-	margin-left:-10px;
-	background-position:60% 6%;
-	margin-right:10px;
+#ot.rain{
+	padding:35px 0 0 59px;
+	margin:0 10px 0 -10px;
+	background-position:60% 7%
 }
 
-#weather-forecast {
-	height:300px;
-}
-
-#forecast li {
+#forecast li{
 	list-style:none;
 	display:block;
 	font-weight:700;
 	float:left;
 	height:100px;
 	width:16.6667%;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	border-right:1px solid #ddd;
+	border-right:1px solid #ddd
 }
 
-#forecast ul {
-	margin:0;
-	margin-left:-10px;
+#forecast ul{
+	margin:0 0 0 -10px;
 	width:420px;
 	height:101px;
 	padding:0;
-	border-top:1px solid #ddd;
+	border-top:1px solid #ddd
 }
 
-#forecast li:last-child {
+#forecast li:last-child{
 	border-right:none;
 }
 
-#forecast li span {
+#forecast li span{
 	text-align:center;
 	display:block;
 	padding:5px;
-	font-size:1em;
+	font-size:1em
 }
 
-#forecast li span.day {
+#forecast li span.day{
 	background:url(img/Climacons_small.png);
 	text-transform:uppercase;
-	padding-bottom:50px;
+	padding-bottom:50px
 }
-
-#forecast li span.temp {
-	margin-top:-4px;
-	margin-left:3px;
-}
-
-#forecast li span.day.tstorms {
-	background-position:-320px -520px;
-}
-
-#forecast li span.day.partlycloudy,#forecast li span.day.mostlycloudy {
-	background-position:-66px -15px;
-}
-
-#forecast li span.day.chancerain {
-	background-position:-321px -17px;
-}
-
-#forecast li span.day.cloudy {
-	background-position:2px -16px;
-}
-
-#forecast li span.day.clear {
-	background-position:-409px -246px;
-}
-
-#forecast li span.day.chancetstorms {
-	background-position:-409px -518px;
-}
-
-#forecast li span:last-child:after {
-	content:"\00B0";
-}
+#forecast li span.temp{margin-top:-4px 0 0 -3px}
+#forecast li span.day.tstorms{background-position:-320px -520px}
+#forecast li span.day.partlycloudy,#forecast li span.day.mostlycloudy{background-position:-66px -15px}
+#forecast li span.day.chancerain{background-position:-321px -17px}
+#forecast li span.day.cloudy{background-position:2px -16px}
+#forecast li span.day.clear{background-position:-409px -246px}
+#forecast li span.day.chancetstorms{background-position:-409px -518px}
