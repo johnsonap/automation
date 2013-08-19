@@ -10,8 +10,28 @@ body {
 	width:100%;
 }
 
-#lights {
-	display:none;
+#pane-holder{
+    height: 300px;
+    overflow: hidden;
+    width: 420px;
+    position: absolute;
+    left: 60px;
+    top: 0;
+}
+
+.icon-lightbulb.on{
+    cursor: pointer;
+    color: #FDF677;
+    padding-left: 3px;
+    padding-top: 4px;
+    font-size: 24px;
+}
+.icon-lightbulb.off{
+    cursor: pointer;
+    color: #808080;
+    padding-left: 3px;
+    padding-top: 4px;
+    font-size: 24px;
 }
 
 .hvac a.btn {
@@ -110,7 +130,6 @@ body {
 }
 
 #thermostat {
-	float:left;
 	text-align:center;
 }
 
@@ -118,11 +137,6 @@ body {
 	width:210px;
 	float:left;
 	margin-top:10px;
-}
-
-#weather-forecast {
-	float:left;
-	display:none;
 }
 
 #current-temp .button {
@@ -184,7 +198,14 @@ body {
 
 .pane {
 	width:410px;
+	float: right;
+	display: none;
 }
+.pane.active{
+    display: block;
+}
+
+
 
 /* weather forecast */
 #forecast {
@@ -261,7 +282,9 @@ body {
 	display:inline-block;
 	border:1px solid #eee;
 	height:87px;
-	width:127px;
+	font-size: 18px;
+	font-weight: bold;
+	width: 195px;
 	margin:0 6px 10px 0;
 	padding:1px 5px;
 }

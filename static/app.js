@@ -29,9 +29,10 @@ function sigFigs(n, sig) {
 
 
 $('#sidebar').fastClick(function(e){
-    $('.pane').hide();
-    window.e = e;
-    $('#' + $(e.target).attr('data-pane')).css('display','block');
+    $('.pane').removeClass('active');    
+    $('#' + $(e.target).attr('data-pane')).addClass('active');
+    $.get('settings/current_tab/'+$(e.target).attr('data-pane'));
+
 });
 
 $('.hvac a').fastClick(function(e){

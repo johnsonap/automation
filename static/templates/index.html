@@ -3,63 +3,24 @@
 
     <div id="main">
         <ul id="sidebar">
-            <li data-pane="thermostat"><i class="icon-dashboard"></i></li>
-
-            <li data-pane="weather-forecast"><i class="icon-umbrella"></i></li>
-            
-            <li data-pane="lights"><i class="icon-lightbulb"></i></li>
-            
-            <li><i class="icon-bar-chart"></i></li>
-            
-            <li><i class="icon-cogs"></i></li>
-
-            
-
+            <li class="{% if settings.current_tab == 'thermostat' %}active{% endif%}" data-pane="thermostat"><i class="icon-dashboard"></i></li>
+            <li class="{% if settings.current_tab == 'weather-forecast' %}active{% endif%}"data-pane="weather-forecast"><i class="icon-umbrella"></i></li>
+            <li class="{% if settings.current_tab == 'lights' %}active{% endif%}" data-pane="lights"><i class="icon-lightbulb"></i></li>
+            <li class="{% if settings.current_tab == 'charts' %}active{% endif%}"><i class="icon-bar-chart"></i></li>
+            <li class="{% if settings.current_tab == 'settings' %}active{% endif%}"><i class="icon-cogs"></i></li>
         </ul>
-        <div class="pane" id="lights">
-        <ul>
-            <li class="light">Front Door</li>
-            <li class="light">Kitchen</li>
-            <li class="light">Couch Standup</li>
-            <li class="light">Bedside Lamp</li>
-            <li class="light">Porch</li>
-            <li class="light">Couch Standup</li>
-            <li class="light">Bedside Lamp</li>
-            <li class="light">Porch</li>
-            <li class="light">Couch Standup</li>
-        </div>
-        <div class="pane" id="thermostat">
-            <div class="thermostat">
-                <div id="current-temp">
-                    <div class="temp">{{hvac.current_temp}}</div>
-                    <div class="change-temp">
-                        <a id="temp-minus" ><i class="icon-minus"></i></a>
-                        <a id="temp-plus" ><i class="icon-plus"></i></a>
-                    </div>
-                </div>
-                
-                <div class="thermostat-control">
-                    <div class="hvac hvac_setting btn-group btn-group-justified">
-                        <a type="button" class="btn heat {% if hvac.hvac_setting == 'HEAT' %}btn-primary{% else %}btn-default{% endif%}">HEAT</a>
-                        <a type="button" class="btn ac {% if hvac.hvac_setting == 'AC' %}btn-primary{% else %}btn-default{% endif%}">AC</a>
-                    </div>
-        
-                    <div class="hvac on_off btn-group btn-group-justified">
-                        <a type="button" class="btn auto {% if hvac.on_off == 'AUTO' %}btn-primary{% else %}btn-default{% endif%}">AUTO</a>
-                        <a type="button" class="btn on {% if hvac.on_off == 'ON' %}btn-primary{% else %}btn-default{% endif%}">ON</a>
-                        <a type="button" class="btn off {% if hvac.on_off == 'OFF' %}btn-primary{% else %}btn-default{% endif%}">OFF</a>
-                    </div>
-                </div>
+        <div id="pane-holder">
+            <div class="pane {% if settings.current_tab == 'lights' %}active{% endif%}" id="lights">
+            {% include "lights.html" %} 
             </div>
-            <div id="hvac-stats">
-                <span class="inside label label-info">Current House Temp <span>{{hvac.inside_temp}}&deg;</span></span>
-                <span class="outside label label-success">Current Outside Temp <span>{{ weather.current_observation.temp_f|round|int }}&deg;</span></span>
+    
+            <div class="pane {% if settings.current_tab == 'thermostat' %}active{% endif%}" id="thermostat">
+            {% include "thermostat.html" %}     
             </div>
-
-        </div>
-        
-        <div class="pane" id="weather-forecast">
-        {% include "weather.html" %} 
+            
+            <div class="pane {% if settings.current_tab == 'weather-forecast' %}active{% endif%}" id="weather-forecast">
+            {% include "weather.html" %} 
+            </div>
         </div>
     </div>
 {% endblock %}

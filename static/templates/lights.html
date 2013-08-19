@@ -1,0 +1,6 @@
+<ul>
+    {% for light in lights %}
+        <li class="light">{{ light.name }} <i class="icon-lightbulb {{ light.status }}"></i></li>
+    {% endfor %}
+
+</ul>
