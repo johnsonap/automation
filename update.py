@@ -39,14 +39,15 @@ if int(sunset['hour']) < int(now_time.hour-5):
 if int(sunset['hour']) == int(now_time.hour-5):
     if int(sunset['minute']) <= int(now_time.minute):
         night = True
-if int(sunrise['hour']) > int(now_time.hour):
+if int(sunrise['hour']) > int(now_time.hour-5):
     night = True
-if int(sunrise['hour']) == int(now_time.hour):
+if int(sunrise['hour']) == int(now_time.hour-5):
     if int(sunrise['minute']) >= int(now_time.minute):
         night = True
 night_string = ''
 if night:
     night_string = 'night'
+
 datan['current_observation']['night'] = night
 datan['current_observation']['night_string'] = night_string
 datan['current_observation']['flag_color'] = flag_color

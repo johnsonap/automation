@@ -138,6 +138,12 @@ weather_channel.bind('current_conditions', function(data) {
     $('#weather-forecast').html(_.template(weather_template.responseText, weather));    
 });
 
+$('#right-submit').fastClick(function(){
+   zip = $('#zip_code').val();
+   $.get('/settings/zip_code/'+zip);
+   console.log(zip); 
+});
+
 hvac_channel.bind('update_temp', function(data) {
     if(data.id != window.id){
         $('#current-temp .temp').html(data.temp+'&deg;');
