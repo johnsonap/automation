@@ -1,0 +1,21 @@
+    
+	<div id="currentConditions">
+    	<div id="ot" class="{{ weather.current_observation.night_string }} {{ weather.current_observation.icon }}">{{ weather.current_observation.temp_f_round }}&deg;</div>
+	    <div id="vitals">
+	       <h3><i class="icon-flag {{ weather.current_observation.flag_color }}"></i>  {{ weather.current_observation.display_location.city }}</h3><p>
+	       High: {{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}&deg;
+	       <br/>Low: {{ weather.forecast.simpleforecast.forecastday[0].low.fahrenheit }}&deg;
+	       <br/>Wind: {{weather.current_observation.wind_string }}
+	       <br/>Relative Humidity: {{ weather.current_observation.relative_humidity }}</p></div>
+	    </div>
+	<div id="fc">
+		
+		<ul>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[0].icon }}">{{ weather.forecast.simpleforecast.forecastday[0].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[0].high.fahrenheit }}&deg;</span></li>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[1].icon }}">{{ weather.forecast.simpleforecast.forecastday[1].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[1].high.fahrenheit }}&deg;</span></li>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[2].icon }}">{{ weather.forecast.simpleforecast.forecastday[2].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[2].high.fahrenheit }}&deg;</span></li>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[3].icon }}">{{ weather.forecast.simpleforecast.forecastday[3].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[3].high.fahrenheit }}&deg;</span></li>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[4].icon }}">{{ weather.forecast.simpleforecast.forecastday[4].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[4].high.fahrenheit }}&deg;</span></li>
+		<li><span class="day {{ weather.forecast.simpleforecast.forecastday[5].icon }}">{{ weather.forecast.simpleforecast.forecastday[5].date.weekday_short }}</span><span class="temp">{{ weather.forecast.simpleforecast.forecastday[5].high.fahrenheit }}&deg;</span></li>
+		</ul>
+	</div>

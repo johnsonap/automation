@@ -17,7 +17,8 @@ else:
 p = pusher.Pusher(app_id='51528', key='bbfd2fdfc81124a36b18', secret='c192b321e8df94b5b127')
 
 settings_data = db.settings.find_one({'data':'settings'})['json']
-url = "http://api.wunderground.com/api/3bb540c93093fad7/geolookup/conditions/forecast/astronomy/forecast10day/q/" + settings_data.zip_code + ".json"
+print settings_data
+url = "http://api.wunderground.com/api/3bb540c93093fad7/geolookup/conditions/forecast/astronomy/forecast10day/q/" + settings_data['zip_code'] + ".json"
 usock = urllib2.urlopen(url)
 weather_data = usock.read()
 datan = json.loads(weather_data)
@@ -33,7 +34,7 @@ now_time = datetime.datetime.utcnow()
 night = False
 sunset = datan['sun_phase']['sunset']
 sunrise = datan['sun_phase']['sunrise']
-tz_offset = int(settings_data.timezone_offset);
+tz_offset = int(settings_data['timezone_offset']);
 if int(sunset['hour']) < int(now_time.hour + tz_offset):
     night = True
 if int(sunset['hour']) == int(now_time.hour + tz_offset):
