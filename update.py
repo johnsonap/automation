@@ -16,8 +16,8 @@ else:
 
 p = pusher.Pusher(app_id='51528', key='bbfd2fdfc81124a36b18', secret='c192b321e8df94b5b127')
 
-
-url = "http://api.wunderground.com/api/3bb540c93093fad7/geolookup/conditions/forecast/astronomy/forecast10day/q/32408.json"
+zip_code = db.settings.find_one({'data':'settings'})['json']['zip_code']
+url = "http://api.wunderground.com/api/3bb540c93093fad7/geolookup/conditions/forecast/astronomy/forecast10day/q/" + zip_code + ".json"
 usock = urllib2.urlopen(url)
 weather_data = usock.read()
 datan = json.loads(weather_data)
@@ -60,12 +60,12 @@ else:
 
 datan['current_observation']['wind_string'] = wind_string
 
-data = db.weather.find_one({'data':'weather'})
+data = db.settings.find_one({'data':'weather'})
 if not data:
     data = {'data':'weather', 'json':datan}
 else:
     data['json'] = datan
-db.weather.save(data)
+db.settings.save(data)
 
 p['weather'].trigger('current_conditions', {'current_observation': datan['current_observation'],'forecast':{'simpleforecast':{'forecastday': datan['forecast']['simpleforecast']['forecastday'][0:7]}}})
 

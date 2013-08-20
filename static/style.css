@@ -165,13 +165,23 @@ a.btn{padding:13px}
 
 /* settings panel */
 
-#settings form{
+#settings{
     margin-top: 10px;
 }
 
-#settings .form-group{
-    width: 200px;
+#settings .left{
+    width: 130px;
+    float: left;
 }
+
+#settings .right{
+    width: 250px;
+    padding-left: 20px;
+    height: 280px;
+    border-left: 1px solid #ddd;
+    float:right;
+}
+
 
 /* weather forecast */
 #fc{
@@ -240,18 +250,18 @@ a.btn{padding:13px}
 	font-size:34px;
 	float:left;
 	font-weight:700;
-	width:50%;
+	width:210px;
 }
 
 #ot.partlycloudy,#ot.mostlycloudy{
 	padding:94px 0 0 36px;
-	background-position:132% 4%;
+	background-position:132.3% 4.1%;
 	margin-left:5px
 }
 
 #ot.night.partlycloudy,#ot.night.mostlycloudy{
-	padding:81px 0 0 37px;
-	background-position:152% 5%;
+	padding: 69px 0 0 43px;
+	background-position: 152% 6%;
 	margin-left:5px
 }
 

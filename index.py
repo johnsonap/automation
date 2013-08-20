@@ -37,6 +37,14 @@ def set_tab(tab):
     db.settings.save(setting_data)
     return "ok", 200, {'Content-Type': 'text/plain'}
 
+@app.route('/settings/zip_code/<zip_code>')
+def set_zip(zip_code):
+    setting_data = db.settings.find_one({'data':'settings'})
+    setting_data['json']['zip_code'] = zip_code;
+    db.settings.save(setting_data)
+    os.system("python update.py")
+    return "ok", 200, {'Content-Type': 'text/plain'}
+
 @app.route('/hvac/temp/<temp>/<client_id>')
 def settemp(temp, client_id):
     hvac_data = db.settings.find_one({'data':'hvac'})

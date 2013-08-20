@@ -140,7 +140,7 @@ weather_channel.bind('current_conditions', function(data) {
 
 hvac_channel.bind('update_temp', function(data) {
     if(data.id != window.id){
-        $('#current-temp .temp').html(data.temp);
+        $('#current-temp .temp').html(data.temp+'&deg;');
     }
 });
 
