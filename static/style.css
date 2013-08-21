@@ -348,7 +348,6 @@ font-size: 17px;
 }
 
 #currentConditions .summary{
-    font-size: .9em;
     float: left;
 }
 #vitals .wind:after{
@@ -387,12 +386,12 @@ font-size: 17px;
 }
 
 #ot{
-	height:125px;
+	height:95px;
 	font-size:65px;
 	line-height: 65px;
 	float:left;
 	font-weight:700;
-	width:200px;
+	width:100%;
 	position: relative;
 }
 
@@ -400,8 +399,8 @@ font-size: 17px;
     font-family: "Weather";
     font-size: 200px;
     position: absolute;
-    left: 85px;
-    top: 15px;
+    left: 95px;
+    top: 0px;
 }
 
 #ot.partly-cloudy-day:after{
@@ -419,16 +418,26 @@ font-size: 17px;
 
 #ot.clear-night:after{
     content:"6";
-    font-size: 268px;
-    top: 25px;
-    left: 101px;
+    content: "6";
+    font-size: 222px;
+
+    left: 107px;
+    
+}
+
+
+#ot.clear-day:after{
+    content:"1";
+    font-size: 115px;
+    top: 11px;
+    left: 119px;
     
 }
 #ot.rain:after{
     content:"G";
-    font-size: 194px;
-    top: 10px;
-    left: 95px;
+    font-size: 139px;
+    top: -6px;
+    left: 109px;
 }
 
 #ot.partlycloudy,#ot.mostlycloudy{
