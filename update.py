@@ -39,19 +39,19 @@ windBearing = forecast_data['currently']['windBearing']
 wind_string = ''
 if windBearing > 337.5 or windBearing < 22.5:
     wind_string = 'N'
-if windBearing > 67.5 or windBearing < 112.5:
+if windBearing > 67.5 and windBearing < 112.5:
     wind_string = 'E'
-if windBearing > 157.5 or windBearing < 202.5:
+if windBearing > 157.5 and windBearing < 202.5:
     wind_string = 'S'
-if windBearing > 247.5 or windBearing < 292.5:
+if windBearing > 247.5 and windBearing < 292.5:
     wind_string = 'W'
-if windBearing > 22.5 or windBearing < 67.5:
+if windBearing > 22.5 and windBearing < 67.5:
     wind_string = 'NE'
-if windBearing > 112.5 or windBearing < 157.5:
+if windBearing > 112.5 and windBearing < 157.5:
     wind_string = 'SE'
-if windBearing > 292.5 or windBearing < 337.5:
+if windBearing > 292.5 and windBearing < 337.5:
     wind_string = 'NW'
-if windBearing > 202.5 or windBearing < 247.5:
+if windBearing > 202.5 and windBearing < 247.5:
     wind_string = 'SW'
 forecast_data['currently']['wind_string'] = wind_string
 for day in forecast_data['forecast']['data']:
@@ -76,16 +76,17 @@ for day in forecast_data['forecast']['data']:
     del day['precipProbability']
     del day['precipType']
     day['windSpeed'] = round(day['windSpeed'] * .8689,1)
+
 forecast_data['forecast'] = forecast_data['forecast']['data']
-p['weather'].trigger('weather', {'data': forecast_data })
 flag_page = Soup(urllib2.urlopen('http://www.visitpanamacitybeach.com/controller.cfm?plugin=beachFlags&object=currentFlagApi&action=getAjax&startrow=1&rows=1&paginate=true&orderby=updated+desc').read())
 flag_page = str(flag_page)
 flag_page = flag_page[:flag_page.index('meta')-2]+'}}}'
 flag_data = json.loads(flag_page)
 flag_color = flag_data['data']['data']['result'][0]['code']
-
-
 forecast_data['currently']['flag_color'] = flag_color
+
+p['weather'].trigger('weather', {'weather': forecast_data })
+
 
 
 forecast_db = db.settings.find_one({'data':'forecast_api'})

@@ -129,8 +129,9 @@ var weather_channel = pusher.subscribe('weather');
 var hvac_channel = pusher.subscribe('hvac');
 var light_channel = pusher.subscribe('lights');
 
-weather_channel.bind('current_conditions', function(data) {
+weather_channel.bind('weather', function(data) {
     window.weather = data;
+    
     $.ajaxSetup({
         async: false
     });

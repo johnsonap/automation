@@ -297,7 +297,13 @@ a.btn{padding:13px}
 #vitals h3{
     margin: 0 0 5px 0;
 }
+#vitals p{
+    margin-bottom: 4px;
+}
 
+#vitals .summary{
+    font-size: .9em;
+}
 #vitals .wind:after{
     font-family: 'Weather';
 
