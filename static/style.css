@@ -218,11 +218,25 @@ a.btn{padding:13px}
 
 }
 
+#fc .day.wind:after{
+    content: ",";
+    right: 40px;
+    bottom: -8px;
+
+}
+
+#fc .day.clear-day:after{
+    content: "1";
+    right: 46px;
+    bottom: -15px;
+
+}
+
 
 
 #fc{
     float: right;
-    width: 150px;
+    width: 140px;
     height: 300px;
 }
 
@@ -244,7 +258,7 @@ a.btn{padding:13px}
 #fc li:last-child{border:none}
 
 #fc span{
-	padding: 10px 0px 0px 9px;
+	padding: 10px 0px 0px 0px;
     font-size: 20px;
     float: left;
 }
@@ -270,14 +284,45 @@ a.btn{padding:13px}
 
 .icon-flag.doublered::after{
 	content:"\f024";
-	display:block
+	margin-left: -18px;
 }
 
 .icon-flag{
-	font-size:33px;
-	position: absolute;
-	top: 75px;
-	text-shadow:1px 1px 2px #aaa
+	font-size: 1.1em;
+    text-shadow: 1px 1px 2px #aaa;
+    margin-right: 10px;
+}
+.humidity{
+    margin-left: 60px;
+}
+.humidity:before{
+    font-family: 'Weather';
+content: '5';
+font-size: 69px;
+line-height: 1px;
+position: absolute;
+margin-top: 21px;
+margin-left: -23px;
+}
+
+#temps{
+    width: 71px;
+text-align: center;
+font-weight: bold;
+top: 101px;
+left: 2px;
+position: absolute;
+font-size: 17px;
+}
+
+#temps .low{
+    text-align: right;
+    float: right;
+}
+
+#temps .high{
+    text-align: left;
+    float: left;
 }
 
 #currentConditions{
@@ -285,7 +330,6 @@ a.btn{padding:13px}
     position: relative;
     width: 250px;
     height: 300px;
-    border-right: 1px solid #ddd;
     padding-right: 10px;
 }
 
@@ -294,24 +338,27 @@ a.btn{padding:13px}
     float: left;
 }
 
-#vitals h3{
-    margin: 0 0 5px 0;
+#currentConditions h3{
+    margin: 10px 0 5px 0;
 }
-#vitals p{
-    margin-bottom: 4px;
+#vitals{
+    margin-bottom: 10px;
+    width: 240px;
+    font-size: 25px;
 }
 
-#vitals .summary{
+#currentConditions .summary{
     font-size: .9em;
+    float: left;
 }
 #vitals .wind:after{
     font-family: 'Weather';
 
-    font-size: 80px;
+    font-size: 60px;
     line-height: 3px;
     position: absolute;
-    margin-top: 13px;
-    margin-left: 7px;
+    margin-top: 15px;
+    margin-left: 4px;
 }
 .wind.NE:after{
     content:'"';
@@ -359,11 +406,14 @@ a.btn{padding:13px}
 
 #ot.partly-cloudy-day:after{
     content:"A";
+    font-size: 160px;
+    top: 26px;
 
 }
 
 #ot.partly-cloudy-night:after{
     content:"a";
+    font-size: 160px;
 
 }
 

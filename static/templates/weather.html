@@ -1,12 +1,12 @@
     
 	<div id="currentConditions">
+    	<h3>{{ weather.currently.location}}</h3>
     	<div id="ot" class="{{ weather.currently.icon }}">{{ weather.currently.temperature }}&deg;</div>
+    	<div id="temps"><span class="high">{{ weather.forecast[0].temperatureMax }}&deg;</span>/  <span class="low"> {{ weather.forecast[0].temperatureMin }}&deg;</span></div>
 	    <div id="vitals">
-	       <h3><i class="icon-flag {{ weather.currently.flag_color }}"></i>{{ weather.currently.location}}</h3><p>
-	       High: {{ weather.forecast[0].temperatureMax }}&deg;, Low: {{ weather.forecast[0].temperatureMin }}&deg;
-	       <br/><span class="wind {{ weather.currently.wind_string }}">Wind: {{ weather.currently.windSpeed }} knots</span> <br/> Humidity: {{ weather.currently.humidity }}%</p>
-	       <p class="summary"><b>Next Hour</b> - {{ weather.summaries.hour }} <br/><b>Next 24 Hours</b> - {{ weather.summaries.hours }}</p></div>
+    	   <span class="wind {{ weather.currently.wind_string }}"><i class="icon-flag {{ weather.currently.flag_color }}"></i>{{ weather.currently.windSpeed }} kt</span> <span class="humidity"> {{ weather.currently.humidity }}%</span>
 	    </div>
+	    <p class="summary"><b>Next Hour</b> - {{ weather.summaries.hour }} <br/><b>Next 24 Hours</b> - {{ weather.summaries.hours }}</p></div>
 	<div id="fc">
 		
 		<ul>
