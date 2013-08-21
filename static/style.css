@@ -184,48 +184,84 @@ a.btn{padding:13px}
 
 
 /* weather forecast */
+
+@font-face{font-family:'Weather';src:url('weather.svg#weather') format('svg');font-weight:normal;font-style:normal;}
+
+#fc span.day:after {
+    font-family: "Weather";
+    position: absolute;
+    font-size: 56px;
+    right: 38px;
+}
+
+#fc .day.tstorms:after{
+    content: "Y";
+}
+#fc .day.chancetstorms:after{
+    content: "X";
+}
+
+#fc .day.partly-cloudy-day:after{
+    content: "A";
+    right: 38px;
+    bottom: -14px;
+}
+
+#fc .day.partly-cloudy-night:after{
+    content: "a";
+}
+
+#fc .day.rain:after{
+    content: "G";
+    right: 43px;
+    bottom: -8px;
+
+}
+
+
+
 #fc{
-	top:199px;
-	position:fixed
+    float: right;
+    width: 150px;
+    height: 300px;
 }
 
 #fc li{
 	list-style:none;
+	display: block;
+	position: relative;
 	font-weight:700;
-	float:left;
-	width:16.6667%;
-	border-right:1px solid #ddd
+	width:100%;
+	height: 50px;
+	border-bottom:1px solid #ddd
 }
 
 #fc ul{
-	margin:0 0 0 -10px;
-	width:420px;
-	height:101px;
+	margin:0;
 	padding:0;
-	border-top:1px solid #ddd
 }
 
-#fc li:last-child{border-right:none}
+#fc li:last-child{border:none}
 
 #fc span{
-	text-align:center;
-	display:block;
-	padding:5px;
-	font-size:1em
+	padding: 10px 0px 0px 9px;
+    font-size: 20px;
+    float: left;
+}
+
+#fc .summary{
+    width: 100px;
+    font-size: .5em;
 }
 
 #fc .day{
-	background:url(img/Climacons_small.png);
 	text-transform:uppercase;
-	padding-bottom:50px
 }
-#fc span.temp{margin-top:-4px 0 0 -3px}
-#fc .tstorms{background-position:-320px -520px}
-#fc .partlycloudy,#fc .mostlycloudy{background-position:-66px -15px}
-#fc .chancerain{background-position:-321px -17px}
-#fc .cloudy{background-position:2px -16px}
-#fc .clear{background-position:-409px -246px}
-#fc .chancetstorms{background-position:-409px -518px}
+#fc span.temp{
+    margin: 0px 0 0 -3px;
+    float: right;
+    font-size: 20px;
+}
 
 .icon-flag.yellow{color:#FCF2A2}
 .icon-flag.red,.icon-flag.doublered{color:#AA0F03}
@@ -239,18 +275,104 @@ a.btn{padding:13px}
 
 .icon-flag{
 	font-size:33px;
-	margin-top:-15px;
-	float:right;
+	position: absolute;
+	top: 75px;
 	text-shadow:1px 1px 2px #aaa
 }
 
+#currentConditions{
+    float: left;
+    position: relative;
+    width: 250px;
+    height: 300px;
+    border-right: 1px solid #ddd;
+    padding-right: 10px;
+}
+
+#vitals{
+    display: block;
+    float: left;
+}
+
+#vitals h3{
+    margin: 0 0 5px 0;
+}
+
+#vitals .wind:after{
+    font-family: 'Weather';
+
+    font-size: 80px;
+    line-height: 3px;
+    position: absolute;
+    margin-top: 13px;
+    margin-left: 7px;
+}
+.wind.NE:after{
+    content:'"';
+}
+
+.wind.NW:after{
+    content:'?';
+}
+.wind.N:after{
+    content:'\00BF';
+}
+.wind.E:after{
+    content:"'";
+}
+.wind.W:after{
+    content:'\00B7';
+}
+.wind.S:after{
+    content:'#';
+}
+.wind.SW:after{
+    content:'.';
+}
+.wind.SE:after{
+    content:';';
+}
+
 #ot{
-	background:url(img/Climacons_huge.png);
-	height:185px;
-	font-size:34px;
+	height:125px;
+	font-size:65px;
+	line-height: 65px;
 	float:left;
 	font-weight:700;
-	width:210px;
+	width:200px;
+	position: relative;
+}
+
+#ot:after{
+    font-family: "Weather";
+    font-size: 200px;
+    position: absolute;
+    left: 85px;
+    top: 15px;
+}
+
+#ot.partly-cloudy-day:after{
+    content:"A";
+
+}
+
+#ot.partly-cloudy-night:after{
+    content:"a";
+
+}
+
+#ot.clear-night:after{
+    content:"6";
+    font-size: 268px;
+    top: 25px;
+    left: 101px;
+    
+}
+#ot.rain:after{
+    content:"G";
+    font-size: 194px;
+    top: 10px;
+    left: 95px;
 }
 
 #ot.partlycloudy,#ot.mostlycloudy{
@@ -286,10 +408,4 @@ a.btn{padding:13px}
 #ot.tstorms{
 	padding:34px 0 0 56px;
 	background-position:79% 94%
-}
-
-#ot.rain{
-	padding:35px 0 0 59px;
-	margin:0 10px 0 -10px;
-	background-position:60% 7%
 }

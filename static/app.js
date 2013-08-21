@@ -1,4 +1,4 @@
-document.ontouchstart = function(e){ 
+    document.ontouchstart = function(e){ 
     e.preventDefault(); 
 }
 

@@ -13,63 +13,85 @@ else:
     connection = Connection('localhost', 27017)
     db = connection['home_automation']
 
-
 p = pusher.Pusher(app_id='51528', key='bbfd2fdfc81124a36b18', secret='c192b321e8df94b5b127')
 
 settings_data = db.settings.find_one({'data':'settings'})['json']
-print settings_data
-url = "http://api.wunderground.com/api/3bb540c93093fad7/geolookup/conditions/forecast/astronomy/forecast10day/q/" + settings_data['zip_code'] + ".json"
-usock = urllib2.urlopen(url)
+
+forecast_url = "https://api.forecast.io/forecast/b4e07ec19b8a1b7a98536d29f0f42dd3/30.1466,-85.7596"
+usock = urllib2.urlopen(forecast_url)
 weather_data = usock.read()
-datan = json.loads(weather_data)
+weather_data = json.loads(weather_data)
 usock.close()
 
+forecast_data = {}
+if 'alerts' in weather_data.keys():
+    forecast_data['alerts'] = weather_data['alerts']
+forecast_data['currently'] = weather_data['currently']
+forecast_data['currently']['temperature'] = int(round(forecast_data['currently']['temperature'],0))
+forecast_data['currently']['location'] = settings_data['location']
+forecast_data['summaries'] = {}
+forecast_data['summaries']['hour'] = weather_data['minutely']['summary']
+forecast_data['summaries']['hours'] = weather_data['hourly']['summary']
+forecast_data['forecast'] = weather_data['daily']
+forecast_data['currently']['windSpeed'] = round(forecast_data['currently']['windSpeed'] * .8689,1)
+forecast_data['currently']['humidity'] = int(round(forecast_data['currently']['humidity'] *100, 0))
+windBearing = forecast_data['currently']['windBearing']
+wind_string = ''
+if windBearing > 337.5 or windBearing < 22.5:
+    wind_string = 'N'
+if windBearing > 67.5 or windBearing < 112.5:
+    wind_string = 'E'
+if windBearing > 157.5 or windBearing < 202.5:
+    wind_string = 'S'
+if windBearing > 247.5 or windBearing < 292.5:
+    wind_string = 'W'
+if windBearing > 22.5 or windBearing < 67.5:
+    wind_string = 'NE'
+if windBearing > 112.5 or windBearing < 157.5:
+    wind_string = 'SE'
+if windBearing > 292.5 or windBearing < 337.5:
+    wind_string = 'NW'
+if windBearing > 202.5 or windBearing < 247.5:
+    wind_string = 'SW'
+forecast_data['currently']['wind_string'] = wind_string
+for day in forecast_data['forecast']['data']:
+    day['temperatureMin'] = int(round(day['temperatureMin'],0))
+    day['temperatureMax'] = int(round(day['temperatureMax'],0))
+    day['time'] = datetime.date.fromtimestamp(day['time']).strftime('%a')
+    
+    del day['ozone']
+    del day['temperatureMinTime']
+    del day['temperatureMaxTime']
+    del day['pressure']
+    del day['cloudCover']
+    del day['humidity']
+    del day['dewPoint']
+    del day['sunriseTime']
+    del day['sunsetTime']
+    del day['apparentTemperatureMin']
+    del day['apparentTemperatureMax']
+    del day['apparentTemperatureMinTime']
+    del day['apparentTemperatureMaxTime']
+    del day['precipIntensity']
+    del day['precipProbability']
+    del day['precipType']
+    day['windSpeed'] = round(day['windSpeed'] * .8689,1)
+forecast_data['forecast'] = forecast_data['forecast']['data']
+p['weather'].trigger('weather', {'data': forecast_data })
 flag_page = Soup(urllib2.urlopen('http://www.visitpanamacitybeach.com/controller.cfm?plugin=beachFlags&object=currentFlagApi&action=getAjax&startrow=1&rows=1&paginate=true&orderby=updated+desc').read())
 flag_page = str(flag_page)
 flag_page = flag_page[:flag_page.index('meta')-2]+'}}}'
 flag_data = json.loads(flag_page)
 flag_color = flag_data['data']['data']['result'][0]['code']
-datan['current_observation']['temp_f_round'] = int(round(datan['current_observation']['temp_f'],0))
-now_time = datetime.datetime.utcnow()
-night = False
-sunset = datan['sun_phase']['sunset']
-sunrise = datan['sun_phase']['sunrise']
-tz_offset = int(settings_data['timezone_offset']);
-if int(sunset['hour']) < int(now_time.hour + tz_offset):
-    night = True
-if int(sunset['hour']) == int(now_time.hour + tz_offset):
-    if int(sunset['minute']) <= int(now_time.minute):
-        night = True
-if int(sunrise['hour']) > int(now_time.hour + tz_offset):
-    night = True
-if int(sunrise['hour']) == int(now_time.hour + tz_offset):
-    if int(sunrise['minute']) >= int(now_time.minute):
-        night = True
-night_string = ''
-if night:
-    night_string = 'night'
-
-datan['current_observation']['night'] = night
-datan['current_observation']['night_string'] = night_string
-datan['current_observation']['flag_color'] = flag_color
-wind_string = ''
-windspeed =  float(datan['current_observation']['wind_mph']) * 0.868976242
-if( windspeed <1):
-    wind_string = 'Calm'
-else:
-    wind_string = str(round(windspeed,1)) + ' knots, ' + datan['current_observation']['wind_dir']
 
 
-datan['current_observation']['wind_string'] = wind_string
+forecast_data['currently']['flag_color'] = flag_color
 
-data = db.settings.find_one({'data':'weather'})
-if not data:
-    data = {'data':'weather', 'json':datan}
-else:
-    data['json'] = datan
-db.settings.save(data)
 
-p['weather'].trigger('current_conditions', {'current_observation': datan['current_observation'],'forecast':{'simpleforecast':{'forecastday': datan['forecast']['simpleforecast']['forecastday'][0:7]}}})
+forecast_db = db.settings.find_one({'data':'forecast_api'})
+forecast_db['json'] = forecast_data
+db.settings.save(forecast_db)
+
 
 
 

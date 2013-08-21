@@ -24,7 +24,7 @@ app = Flask(__name__,template_folder='static/templates')
 
 @app.route('/')
 def index():
-    weather_data = db.settings.find_one({'data':'weather'})['json']
+    weather_data = db.settings.find_one({'data':'forecast_api'})['json']
     hvac_data = db.settings.find_one({'data':'hvac'})['json']
     light_data = db.settings.find_one({'data':'lights'})['light_list']
     settings = db.settings.find_one({'data':'settings'})['json']
