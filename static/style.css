@@ -297,12 +297,12 @@ a.btn{padding:13px}
 }
 .humidity:before{
     font-family: 'Weather';
-content: '5';
-font-size: 69px;
-line-height: 1px;
-position: absolute;
-margin-top: 21px;
-margin-left: -23px;
+    content: '5';
+    font-size: 64px;
+    line-height: 1px;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -23px;
 }
 
 #temps{
@@ -344,7 +344,7 @@ font-size: 17px;
 #vitals{
     margin-bottom: 10px;
     width: 240px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #currentConditions .summary{
@@ -352,11 +352,10 @@ font-size: 17px;
 }
 #vitals .wind:after{
     font-family: 'Weather';
-
-    font-size: 60px;
+    font-size: 55px;
     line-height: 3px;
     position: absolute;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: 4px;
 }
 .wind.NE:after{

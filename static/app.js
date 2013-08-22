@@ -137,6 +137,7 @@ weather_channel.bind('weather', function(data) {
     });
     var weather_template = $.get('static/templates/weather.html')
     $('#weather-forecast').html(_.template(weather_template.responseText, weather));    
+    $('.temps.outside span').html(weather.weather.currently.temperature + '&deg;');
 });
 
 $('#right-submit').fastClick(function(){
