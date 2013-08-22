@@ -1,6 +1,6 @@
 html{
 	height:300px;
-	width:480px;
+	width:480px
 }
 
 a:hover{text-decoration:none}
@@ -9,9 +9,8 @@ a:hover{text-decoration:none}
     overflow:hidden;
     width:410px;
     height:300px;
-    margin:0 0 0 70px;
+    margin:0 0 0 70px
 }
-
 
 /* main page stuff*/
 
@@ -46,14 +45,14 @@ a:hover{text-decoration:none}
 
 #hvac-stats{
 	float:right;
-	width:180px;
+	width:180px
 }
 
 #current-temp{
 	height:142px;
 	border:1px solid #ccc;
 	margin-bottom:33px;
-	text-align:center;
+	text-align:center
 }
 
 .change-temp a{
@@ -74,8 +73,6 @@ a:hover{text-decoration:none}
 }
 
 a.btn{padding:13px}
-
-#current-temp .button{padding:0 auto}
 
 #current-temp .temp{
 	font-size:7em;
@@ -115,9 +112,8 @@ a.btn{padding:13px}
 /* lights pane */
 
 #lights ul{
-	margin:10px 0 0 0;
 	width: 410px;
-	padding:0;
+	padding:0
 }
 
 #lights li.light{
@@ -130,24 +126,24 @@ a.btn{padding:13px}
     width: 195px;
     margin: 0 10px 10px 0;
     padding: 12px;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .light.control{
     text-align: center;
     cursor: pointer;
     color: #fff;
-    letter-spacing: 1px;
+    letter-spacing: 1px
 }
 
 #lights li.control.on{
     background: #6EA26D;
-    border-color: #4A734A;
+    border-color: #4A734A
 }
 
 #lights li.control.off{
     background: #B55E5A;
-    border-color: #904541;
+    border-color: #904541
 }
 
 .light i{
@@ -155,9 +151,8 @@ a.btn{padding:13px}
     padding: 0px 10px 0px 0px;
     font-size: 34px;
     float: left;
-    display: block;
     line-height: .7em;
-    pointer-events: none;
+    pointer-events: none
 }
 
 .light .icon-lightbulb{color:#808080}
@@ -165,13 +160,11 @@ a.btn{padding:13px}
 
 /* settings panel */
 
-#settings{
-    margin-top: 10px;
-}
+#settings{margin-top: 10px}
 
 #settings .left{
     width: 130px;
-    float: left;
+    float: left
 }
 
 #settings .right{
@@ -179,7 +172,7 @@ a.btn{padding:13px}
     padding-left: 20px;
     height: 280px;
     border-left: 1px solid #ddd;
-    float:right;
+    float:right
 }
 
 
@@ -187,72 +180,22 @@ a.btn{padding:13px}
 
 @font-face{font-family:'Weather';src:url('weather.svg#weather') format('svg');font-weight:normal;font-style:normal;}
 
-#fc span.day:after {
-    font-family: "Weather";
-    position: absolute;
-    font-size: 56px;
-    right: 38px;
-}
-
-#fc .day.tstorms:after{
-    content: "Y";
-}
-#fc .day.chancetstorms:after{
-    content: "X";
-}
-
-#fc .day.partly-cloudy-day:after{
-    content: "A";
-    right: 38px;
-    bottom: -14px;
-}
-
-#fc .day.partly-cloudy-night:after{
-    content: "a";
-}
-
-#fc .day.rain:after{
-    content: "G";
-    right: 43px;
-    bottom: -8px;
-
-}
-
-#fc .day.wind:after{
-    content: ",";
-    right: 40px;
-    bottom: -8px;
-
-}
-
-#fc .day.clear-day:after{
-    content: "1";
-    right: 46px;
-    bottom: -15px;
-
-}
-
-
 
 #fc{
     float: right;
-    width: 140px;
-    height: 300px;
+    width: 140px
+}
+
+#fc ul{
+	padding:0
 }
 
 #fc li{
 	list-style:none;
-	display: block;
 	position: relative;
 	font-weight:700;
-	width:100%;
 	height: 50px;
 	border-bottom:1px solid #ddd
-}
-
-#fc ul{
-	margin:0;
-	padding:0;
 }
 
 #fc li:last-child{border:none}
@@ -260,22 +203,50 @@ a.btn{padding:13px}
 #fc span{
 	padding: 10px 0px 0px 0px;
     font-size: 20px;
-    float: left;
+    float: left
 }
 
-#fc .summary{
-    width: 100px;
-    font-size: .5em;
+#fc .day{text-transform:uppercase}
+
+#fc span.temp{float: right}
+
+#fc span.day:after {
+    font-family: "Weather";
+    position: absolute;
+    font-size: 56px;
+    right: 38px
 }
 
-#fc .day{
-	text-transform:uppercase;
+#fc .day.tstorms:after{content: "Y"}
+
+#fc .day.chancetstorms:after{content: "X"}
+
+#fc .day.partly-cloudy-day:after{
+    content: "A";
+    right: 38px;
+    bottom: -14px
 }
-#fc span.temp{
-    margin: 0px 0 0 -3px;
-    float: right;
-    font-size: 20px;
+
+#fc .day.partly-cloudy-night:after{content: "a"}
+
+#fc .day.rain:after{
+    content: "G";
+    right: 43px;
+    bottom: -8px
 }
+
+#fc .day.wind:after{
+    content: ",";
+    right: 40px;
+    bottom: -8px
+}
+
+#fc .day.clear-day:after{
+    content: "1";
+    right: 46px;
+    bottom: -15px
+}
+
 
 .icon-flag.yellow{color:#FCF2A2}
 .icon-flag.red,.icon-flag.doublered{color:#AA0F03}
@@ -284,17 +255,17 @@ a.btn{padding:13px}
 
 .icon-flag.doublered::after{
 	content:"\f024";
-	margin-left: -18px;
+	margin-left: -18px
 }
 
 .icon-flag{
 	font-size: 1.1em;
     text-shadow: 1px 1px 2px #aaa;
-    margin-right: 10px;
+    margin-right: 10px
 }
-.humidity{
-    margin-left: 60px;
-}
+
+.humidity{margin-left: 60px}
+
 .humidity:before{
     font-family: 'Weather';
     content: '5';
@@ -302,96 +273,64 @@ a.btn{padding:13px}
     line-height: 1px;
     position: absolute;
     margin-top: 15px;
-    margin-left: -23px;
+    margin-left: -23px
 }
 
 #temps{
     width: 71px;
-text-align: center;
-font-weight: bold;
-top: 101px;
-left: 2px;
-position: absolute;
-font-size: 17px;
+    font-weight: bold;
+    top: 101px;
+    left: 2px;
+    position: absolute;
+    font-size: 17px
 }
+
+#temps .high{float: left}
 
 #temps .low{
     text-align: right;
-    float: right;
-}
-
-#temps .high{
-    text-align: left;
-    float: left;
+    float: right
 }
 
 #currentConditions{
     float: left;
     position: relative;
     width: 250px;
-    height: 300px;
-    padding-right: 10px;
 }
 
-#vitals{
-    display: block;
-    float: left;
-}
+#currentConditions h3{margin: 10px 0 5px 0}
 
-#currentConditions h3{
-    margin: 10px 0 5px 0;
-}
 #vitals{
     margin-bottom: 10px;
-    width: 240px;
-    font-size: 20px;
+    width: 100%;
+    font-size: 20px
 }
 
-#currentConditions .summary{
-    float: left;
-}
+#currentConditions .summary{float: left}
 #vitals .wind:after{
     font-family: 'Weather';
     font-size: 55px;
     line-height: 3px;
     position: absolute;
     margin-top: 10px;
-    margin-left: 4px;
-}
-.wind.NE:after{
-    content:'"';
+    margin-left: 4px
 }
 
-.wind.NW:after{
-    content:'?';
-}
-.wind.N:after{
-    content:'\00BF';
-}
-.wind.E:after{
-    content:"'";
-}
-.wind.W:after{
-    content:'\00B7';
-}
-.wind.S:after{
-    content:'#';
-}
-.wind.SW:after{
-    content:'.';
-}
-.wind.SE:after{
-    content:';';
-}
+.wind.NE:after{content:'"'}
+.wind.NW:after{content:'?'}
+.wind.N:after{content:'\00BF'}
+.wind.E:after{content:"'"}
+.wind.W:after{content:'\00B7'}
+.wind.S:after{content:'#'}
+.wind.SW:after{content:'.'}
+.wind.SE:after{content:';'}
 
 #ot{
 	height:95px;
 	font-size:65px;
 	line-height: 65px;
-	float:left;
 	font-weight:700;
-	width:100%;
-	position: relative;
+	position: relative
 }
 
 #ot:after{
@@ -399,78 +338,37 @@ font-size: 17px;
     font-size: 200px;
     position: absolute;
     left: 95px;
-    top: 0px;
+    top: 0px
 }
 
 #ot.partly-cloudy-day:after{
     content:"A";
     font-size: 120px;
     top: 10px;
-    left: 110px;
-
+    left: 110px
 }
 
 #ot.partly-cloudy-night:after{
     content:"a";
-    font-size: 160px;
-
+    font-size: 160px
 }
 
 #ot.clear-night:after{
     content:"6";
-    content: "6";
     font-size: 222px;
-
-    left: 107px;
-    
+    left: 107px
 }
-
 
 #ot.clear-day:after{
     content:"1";
     font-size: 115px;
     top: 11px;
-    left: 119px;
-    
+    left: 119px
 }
+
 #ot.rain:after{
     content:"G";
     font-size: 139px;
     top: -6px;
-    left: 109px;
-}
-
-#ot.partlycloudy,#ot.mostlycloudy{
-	padding:94px 0 0 36px;
-	background-position:132.3% 4.1%;
-	margin-left:5px
-}
-
-#ot.night.partlycloudy,#ot.night.mostlycloudy{
-	padding: 69px 0 0 43px;
-	background-position: 152% 6%;
-	margin-left:5px
-}
-
-#ot.clear{
-	padding:72px 0 0 0;
-	background-position:-1959px -740px;
-	font-size:24px;
-	text-align:center
-}
-
-#ot.night.clear{
-	padding:100px 0 0 87px;
-	background-position:-1272px -758px;
-	font-size:48px
-}
-
-#ot.cloudy{
-	padding:67px 0 0 52px;
-	background-position:2% 6%
-}
-
-#ot.tstorms{
-	padding:34px 0 0 56px;
-	background-position:79% 94%
+    left: 109px
 }
