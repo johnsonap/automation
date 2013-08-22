@@ -405,8 +405,9 @@ font-size: 17px;
 
 #ot.partly-cloudy-day:after{
     content:"A";
-    font-size: 160px;
-    top: 26px;
+    font-size: 120px;
+    top: 10px;
+    left: 110px;
 
 }
 

@@ -62,14 +62,16 @@ def settings(setting_one, setting_two):
     p['hvac'].trigger('update_settings', {'hvac_setting': setting_one, 'on_off': setting_two})
     return "ok", 200, {'Content-Type': 'text/plain'}
     
-@app.route('/lights/<name>/<status>')
-def lights(name, status):
+@app.route('/lights/<light_id>/<status>')
+def lights(light_id, status):
     light_data = db.settings.find_one({'data':'lights'})
     for light in light_data['light_list']:
-        if light['name'] == name:
+
+        if light['light_id'] == int(light_id):
             light['status'] = status
+
     db.settings.save(light_data)
-    p['lights'].trigger('update_lights', {'name': name, 'status': status})
+    p['lights'].trigger('update_lights', {'light_id': light_id, 'status': status})
     return "ok", 200, {'Content-Type': 'text/plain'}
 
 @app.route('/lights/off')

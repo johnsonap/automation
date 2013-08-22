@@ -101,7 +101,7 @@ $('.light:not(.control)').fastClick(function(e){
     if($(e.target).hasClass('on')){
         light_status = 'on';
     }
-    $.get('/lights/' + $(e.target).parent().attr('data-id')+'/' +light_status);
+    $.get('/lights/' + $(e.target).attr('data-id')+'/' +light_status);
 })
 
 function addTemp(index){
