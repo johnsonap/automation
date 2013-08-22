@@ -152,12 +152,12 @@ hvac_channel.bind('update_temp', function(data) {
 });
 
 light_channel.bind('update_lights', function(data) {
-
+    console.log(data);
     if(data.status == 'on'){
-        $('[data-id="'+data.name+'"] i').addClass('on');
+        $('[data-id="'+data.light_id+'"]').addClass('on');
     }
     else{
-        $('[data-id="'+data.name+'"] i').removeClass('on');
+        $('[data-id="'+data.light_id+'"]').removeClass('on');
     }
 });
 
