@@ -6,22 +6,25 @@ arduino = serial.Serial('/dev/tty.usbmodem411')
 
 def lights_callback(data):
 
-    json_data = json.loads(data)
+    lights_data = json.loads(data)
     status = '0'
-    if json_data['status'] == 'on':
+    if lights_data['status'] == 'on':
         status = '1'
-    arduino.write('lght' + json_data['light_id'] + status)
+    arduino.write('lght' + lights_data['light_id'] + status)
     
-def hvac_callback(data):
-    # TODO - update hvac settings for
-    # when temp is updated and when
-    # settings are updated
+def hvacsettings_callback(data):
+    # TODO - update hvac settings
+    
+def hvactemp_callback(data):
+    temp_data = json.loads(data)
+    arduino.write('stmp' + json_data['temp'])
     
 def connect_handler(data):
     lights_channel = pusher.subscribe("lights") 
     hvac_channel = pusher.subscribe("lights")
     lights_channel.bind('update_lights', lights_callback)
-    hvac_channel.bind('update_settings', hvac_callback)
+    hvac_channel.bind('update_settings', hvacsettings_callback)
+    hvac_channel.bind('update_temp', hvacsettings_callback)
     
 if __name__ == '__main__':
     pusher = pusherclient.Pusher('bbfd2fdfc81124a36b18')

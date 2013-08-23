@@ -43,6 +43,13 @@ a:hover{text-decoration:none}
 
 /* thermostat pane */
 
+
+.btn:not(.btn-primary){
+color: #333;
+background-color: #fff;
+border-color: #ccc;
+}
+
 #hvac-stats{
 	float:right;
 	width:180px
